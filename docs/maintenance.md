@@ -152,7 +152,7 @@ created module must be self-contained: replacing its copy of a shared page such
 as `glossary.md` or `maintenance.md` with a link back here would break the moment
 that module is developed independently, which is the whole point of a template.
 The two repositories share several documentation filenames, and the copies
-differ where the repositories differ — `project-status.md` because each names the
+differ where the repositories differ — `org-move.md` because each names the
 other, `glossary.md` because the module scaffold defines terms this repository
 has no use for. Convergence is checked when a shared doc is edited, not enforced
 by tooling.

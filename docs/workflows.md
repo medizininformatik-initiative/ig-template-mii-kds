@@ -11,7 +11,7 @@ The full model with a diagram is in [CONTRIBUTING.md](../CONTRIBUTING.md). In sh
   to arrive only by a `dev → main` **merge commit** (never a squash). Release
   Please's own release commits are cut on `main`, and a few other changes have
   landed there directly — see
-  [project-status.md](project-status.md#branch-state--main-and-dev-are-reconciled)
+  [org-move.md](org-move.md#branch-state--main-and-dev-are-reconciled)
   for the current state and the back-merge rule.
 - **`dev`** — integration branch where reviewed changes accumulate; CI previews run
   here.
@@ -104,7 +104,7 @@ This repository is **tooling**, so it uses **SemVer** via Release Please, runnin
 **Once the package is published**, a module picks up a release by bumping the
 pinned version in its `ig.ini` (or `sushi-config.yaml` dependency), e.g.
 `template = de.medizininformatikinitiative.template#<version>` (a released
-version from the [releases page](https://github.com/forschungsgruppe-digital-health/ig-template-mii-kds/releases)), then rebuilding. See
+version from the [releases page](https://github.com/medizininformatik-initiative/ig-template-mii-kds/releases)), then rebuilding. See
 [recipes/consume-this-template-in-a-module.md](recipes/consume-this-template-in-a-module.md).
 
 **It is not published yet** ([issue #113](../../../issues/113)), so no module pins a
@@ -131,7 +131,7 @@ so if either is ever wanted it belongs in the module template's docs, not here.
 
 ## 4. The published demo
 
-The [Pages landing page](https://forschungsgruppe-digital-health.github.io/ig-template-mii-kds/)
+The [Pages landing page](https://medizininformatik-initiative.github.io/ig-template-mii-kds/)
 advertises one rendering of this repository's preview IG as *the current
 release*. **It tracks the latest release automatically** — `release-demo.yml`
 (§ 2) does the whole thing; there is no manual promotion step, and there must
@@ -168,10 +168,10 @@ Dry-run it against the live page before changing the script:
 
 ```bash
 curl -sSL -o /tmp/index.html \
-  https://forschungsgruppe-digital-health.github.io/ig-template-mii-kds/index.html
+  https://medizininformatik-initiative.github.io/ig-template-mii-kds/index.html
 node scripts/update-demo-links.mjs --check --file /tmp/index.html \
   --version v9.9.9 \
-  --repo-url https://github.com/forschungsgruppe-digital-health/ig-template-mii-kds
+  --repo-url https://github.com/medizininformatik-initiative/ig-template-mii-kds
 ```
 
 ### Retention — old demos are kept

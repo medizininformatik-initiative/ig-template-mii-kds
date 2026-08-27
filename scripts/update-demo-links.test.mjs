@@ -14,7 +14,7 @@ import assert from "node:assert/strict";
 
 import { rewriteLandingPage, normalizeTag, lineDiff } from "./update-demo-links.mjs";
 
-const REPO = "https://github.com/forschungsgruppe-digital-health/ig-template-mii-kds";
+const REPO = "https://github.com/medizininformatik-initiative/ig-template-mii-kds";
 
 const PAGE = `<!DOCTYPE html>
 <html lang="en"><body>

@@ -7,7 +7,7 @@ by this repository's maintainer, not an MII or HL7 conformance statement, and it
 says nothing about what a module IG is obliged to do.
 
 The module-author counterpart lives in the module scaffold:
-[`mii-kds-module-template` → `docs/ig-best-practices-checklist.md`](https://github.com/forschungsgruppe-digital-health/mii-kds-module-template/blob/dev/docs/ig-best-practices-checklist.md).
+[`mii-kds-module-template` → `docs/ig-best-practices-checklist.md`](https://github.com/medizininformatik-initiative/mii-kds-module-template/blob/dev/docs/ig-best-practices-checklist.md).
 
 ## Sources (all official, retrieved 2026-07-26)
 
@@ -85,8 +85,8 @@ what a module keeps is the module author's call:
 |---|---|---|
 | Publication uses the IG Publisher's `-go-publish` mode | ✅ | In the module scaffold: `go-publish.yml`, `workflow_dispatch`-only and dry-run by default, so publishing is always a human step |
 | The template itself is versioned and released so modules can pin it | ✅ | SemVer via Release Please; `package-list.json` tracks the versions |
-| Consumers can pin a template version | ✅ | `template = de.medizininformatikinitiative.template#<version>` in a module's `ig.ini` — today via the vendored mirror, since the package is not registry-published ([`docs/project-status.md`](project-status.md)) |
-| Registry publication is a deliberate, human decision | ✅ | Deferred by decision — see [`docs/project-status.md`](project-status.md) |
+| Consumers can pin a template version | ✅ | `template = de.medizininformatikinitiative.template#<version>` in a module's `ig.ini` — today via the vendored mirror, since the package is not registry-published ([`docs/org-move.md`](org-move.md)) |
+| Registry publication is a deliberate, human decision | ✅ | Deferred by decision — see [`docs/org-move.md`](org-move.md) |
 
 ---
 
@@ -95,7 +95,7 @@ what a module keeps is the module author's call:
 - **The base template is pinned to `0.1.0`, while the MII reference repos float
   `#current`** — for reproducibility; see [`docs/concepts.md`](concepts.md) §2.
 - **The template is not listed in `FHIR/ig-registry`** — a deferred decision; see
-  [`docs/project-status.md`](project-status.md).
+  [`docs/org-move.md`](org-move.md).
 
 ## Re-check on a toolchain bump
 

@@ -23,7 +23,7 @@ Everything else here is about changing the template itself.
 | Cut a release so modules can pin it | [recipes/cut-a-template-release.md](recipes/cut-a-template-release.md) |
 | Enable the terminology server or release announcements | [secrets.md](secrets.md) |
 | See how this follows the published HL7 guidance | [ig-best-practices-checklist.md](ig-best-practices-checklist.md) |
-| Know whether this is production-ready | [project-status.md](project-status.md) |
+| Know whether this is production-ready | [org-move.md](org-move.md) |
 | Know what is unfinished, and why | the [issue tracker](../../../issues); decided limits: [maintenance.md](maintenance.md) |
 | Read the specifications this is built on | [further-reading.md](further-reading.md) |
 

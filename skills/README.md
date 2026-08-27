@@ -42,7 +42,7 @@ documents all three consumption paths.
 
 ### Why they are not vendored here
 
-[`mii-kds-module-template`](https://github.com/forschungsgruppe-digital-health/mii-kds-module-template)
+[`mii-kds-module-template`](https://github.com/medizininformatik-initiative/mii-kds-module-template)
 **does** vendor `fhir-ig-analysis` and `fhir-ig-translation` at a pinned ref, because that is where a
 module author measures and translates a guide, and because "Use this template" copies tracked files
 while fetching nothing — an agent can only invoke a skill that is present on disk.

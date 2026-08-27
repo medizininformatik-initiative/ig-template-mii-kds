@@ -3,7 +3,7 @@
 **Goal.** Make a module IG render with this MII template.
 
 **Prerequisites.** A module IG project (e.g. one created from
-[`mii-kds-module-template`](https://github.com/forschungsgruppe-digital-health/mii-kds-module-template)).
+[`mii-kds-module-template`](https://github.com/medizininformatik-initiative/mii-kds-module-template)).
 
 There are two ways to reference the template. Today only **vendored** works: the
 package `de.medizininformatikinitiative.template` is not resolvable from a FHIR
@@ -26,7 +26,7 @@ Switch to **published** when that changes; see [issue #113](../../../../issues/1
 
 1. In the module's `ig.ini`, set:
    `template = de.medizininformatikinitiative.template#<version>` — any version
-   from the [releases page](https://github.com/forschungsgruppe-digital-health/ig-template-mii-kds/releases).
+   from the [releases page](https://github.com/medizininformatik-initiative/ig-template-mii-kds/releases).
    > **Why a pinned version, not `#current`:** reproducible builds — the same input
    > always produces the same rendered guide.
 2. Delete `ig-template/` — the module scaffold ships a recipe for exactly that
