@@ -1,6 +1,16 @@
 MIIKDSTemplatePreview
 =========================================
 
+Generic: line 0, col 0, Error - The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/tree/main/input/translations/de/pagecontent' for "input/translations/de/pagecontent/" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/input/translations/de/includes/menu.xml' for "input/translations/de/includes/menu.xml" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsBase-de.po' for "translations/stringsBase-de.po" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsArtifacts-de.po' for "stringsArtifacts-de.po" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/docs/recipes/add-translation.md' for "docs/recipes/add-translation.md" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/tree/main/input/translations/de/pagecontent' for "input/translations/de/pagecontent/" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/input/translations/de/includes/menu.xml' for "input/translations/de/includes/menu.xml" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsBase-de.po' for "translations/stringsBase-de.po" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsArtifacts-de.po' for "stringsArtifacts-de.po" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/docs/recipes/add-translation.md' for "docs/recipes/add-translation.md" cannot be resolved (NOTFOUND)
 Generic: line 0, col 0, Warning - An HTML fragment from the set [ip-statements.xhtml, ip-statements.xhtml] is not included anywhere in the produced implementation guide (NOTFOUND)
 Generic: line 0, col 0, Warning - An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml, cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide (NOTFOUND)
 Generic: line 0, col 0, Warning - An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml, dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide (NOTFOUND)
