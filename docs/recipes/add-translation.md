@@ -10,7 +10,7 @@ see a change render in both languages.
 
 **Not here:** translating a *module's* pages, menu and conformance resources.
 That is the module author's job and is documented in the module scaffold —
-[`mii-kds-module-template` → `docs/recipes/add-translation.md`](https://github.com/forschungsgruppe-digital-health/mii-kds-module-template/blob/main/docs/recipes/add-translation.md).
+[`mii-kds-module-template` → `docs/recipes/add-translation.md`](https://github.com/medizininformatik-initiative/mii-kds-module-template/blob/main/docs/recipes/add-translation.md).
 
 ## Language model
 

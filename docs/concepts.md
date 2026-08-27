@@ -21,13 +21,13 @@ vendors this repository's `dev` branch into its own `ig-template/` folder and
 points `ig.ini` at that folder. Nobody pins a version, and a merge into `dev`
 here reaches modules without a release — the mechanics are in
 [workflows.md](workflows.md#how-a-module-consumes-this-template), the status in
-[project-status.md](project-status.md).
+[org-move.md](org-move.md).
 
 > **The argument for a shared template package:** if the KDS modules adopted one,
 > they would share a single presentation, a branding fix would reach them by
 > releasing one version here, and each module would pin a *version* so its build
 > stays reproducible. That is the proposal this repository puts to the TF KDS —
-> see [project-status.md](project-status.md).
+> see [org-move.md](org-move.md).
 
 ## 2. Derived from `fhir2.base.template` — override, don't fork
 
@@ -70,7 +70,7 @@ before a release (see [workflows.md](workflows.md)).
 - **[`FHIR/ig-registry`](https://github.com/FHIR/ig-registry)** — HL7's public
   index; its `templates.json` lists IG **templates** so the Publisher can resolve
   this one by id. This template is deliberately not listed there yet — the
-  decision and its rationale are in [project-status.md](project-status.md).
+  decision and its rationale are in [org-move.md](org-move.md).
 - **Simplifier** — an alternative FHIR registry platform; not required here.
 
 ## 5. The MII governance context

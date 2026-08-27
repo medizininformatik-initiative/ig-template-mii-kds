@@ -18,12 +18,12 @@ yet, so today a module vendors this repository's `dev` branch instead — see
 [how a module consumes this template](docs/workflows.md#how-a-module-consumes-this-template).
 
 To start a module, use
-[`mii-kds-module-template`](https://github.com/forschungsgruppe-digital-health/mii-kds-module-template)
+[`mii-kds-module-template`](https://github.com/medizininformatik-initiative/mii-kds-module-template)
 instead; it already references this template.
 
 > **Status: prototype.** Usable and released, but pending discussion in the MII
 > Taskforce Kerndatensatz, and no module uses it yet — see
-> [docs/project-status.md](docs/project-status.md).
+> [docs/org-move.md](docs/org-move.md).
 
 ## Quickstart (for maintaining the template)
 
@@ -47,7 +47,7 @@ This is for changing the template itself.
    → [cut a template release](docs/recipes/cut-a-template-release.md)
 
 Rendered demo of the current release, plus the development previews:
-<https://forschungsgruppe-digital-health.github.io/ig-template-mii-kds/>
+<https://medizininformatik-initiative.github.io/ig-template-mii-kds/>
 
 Branch previews under `branches/<branch>/` are swept when their branch is deleted;
 the release demo under `demo/<version>/` is permanent.
@@ -77,7 +77,7 @@ newcomers. The three you are most likely to want first:
 
 - [Recipes](docs/recipes/) — step-by-step for the common tasks
 - [Styleguide](docs/styleguide.md) — the layout/design conventions (palette, boxes, tables, language rules, accessibility), with provenance in the appendix
-- [Project status](docs/project-status.md) — prototype; what that means in practice
+- [Org move & governance status](docs/org-move.md) — the repository's home, and which decisions are still open
 
 Contributing and policies: [CONTRIBUTING.md](CONTRIBUTING.md) ·
 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) · [SECURITY.md](SECURITY.md) ·
