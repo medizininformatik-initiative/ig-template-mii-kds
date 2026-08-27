@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview | *Version*:1.3.2 |
-| Draft as of 2026-08-24 | *Computable Name*:MIIKDSTemplatePreview |
+| Draft as of 2026-08-27 | *Computable Name*:MIIKDSTemplatePreview |
 
 This page exists solely for the **preview** of the `de.medizininformatikinitiative.template` IG template. It is **not** an MII Core Dataset module.
 
