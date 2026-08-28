@@ -14,7 +14,9 @@ template [`fhir2.base.template`](https://github.com/HL7/ig-template-base2).
 names it in `ig.ini` and the IG Publisher applies it at build time. Keeping the
 branding in one versioned package means the modules that adopt it look the same,
 and a fix here reaches them with one release. The package is not on a registry
-yet, so today a module vendors this repository's `dev` branch instead — see
+yet, so today a module references this repository **by URL** (the IG Publisher
+fetches the released `main` branch at build time), with a vendored copy of the
+`dev` branch as the offline fallback — see
 [how a module consumes this template](docs/workflows.md#how-a-module-consumes-this-template).
 
 To start a module, use

@@ -15,10 +15,12 @@ module-side `input/data/brand.json` value `{ "design": "mii" }` —
 template [`fhir2.base.template`](https://github.com/HL7/ig-template-base2),
 **pinned to the fixed version `0.1.0`** — never `#current`. MII KDS module
 Implementation Guides reference this package in their `ig.ini`. Until it is
-registry-published they also *copy* it: `mii-kds-module-template` vendors this
+registry-published they reference this repository **by URL** (the IG Publisher
+fetches the released `main` branch at build time, so a release here reaches
+them on their next build) and also *copy* it as the offline fallback:
+`mii-kds-module-template` vendors this
 repo's `package/`, `includes/`, `content/` and `translations/` from `dev` into
-its own `ig-template/` folder, so a merge into `dev` here reaches modules
-without a release — see
+its own `ig-template/` folder — see
 [`docs/workflows.md`](docs/workflows.md#how-a-module-consumes-this-template).
 The separate repo
 [`mii-kds-module-template`](https://github.com/medizininformatik-initiative/mii-kds-module-template)

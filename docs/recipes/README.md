@@ -14,7 +14,7 @@ yet.
 | [replace the logo](replace-the-logo.md) | A logo file has to change |
 | [languages in the template](add-translation.md) | A UI label is blank in one language, or you add a language |
 | [publish the preview on GitHub Pages](publish-the-preview-on-github-pages.md) | The preview builds but the URL 404s, or you are setting up a fresh copy |
-| [cut a template release](cut-a-template-release.md) | `dev` is ready to be pinned as a version — vendoring modules already have it |
+| [cut a template release](cut-a-template-release.md) | `dev` is ready to become a release on `main` — which URL-referencing modules pick up on their next build, and vendoring modules already mirror from `dev` |
 
 ## Using the template
 

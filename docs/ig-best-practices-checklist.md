@@ -85,7 +85,7 @@ what a module keeps is the module author's call:
 |---|---|---|
 | Publication uses the IG Publisher's `-go-publish` mode | ✅ | In the module scaffold: `go-publish.yml`, `workflow_dispatch`-only and dry-run by default, so publishing is always a human step |
 | The template itself is versioned and released so modules can pin it | ✅ | SemVer via Release Please; `package-list.json` tracks the versions |
-| Consumers can pin a template version | ✅ | `template = de.medizininformatikinitiative.template#<version>` in a module's `ig.ini` — today via the vendored mirror, since the package is not registry-published ([`docs/org-move.md`](org-move.md)) |
+| Consumers can pin a template version | ✅ | `template = de.medizininformatikinitiative.template#<version>` in a module's `ig.ini` — today via the vendored mirror, since the package is not registry-published; the interim URL reference (the module default) follows the released `main` and does not pin ([`docs/org-move.md`](org-move.md)) |
 | Registry publication is a deliberate, human decision | ✅ | Deferred by decision — see [`docs/org-move.md`](org-move.md) |
 
 ---
