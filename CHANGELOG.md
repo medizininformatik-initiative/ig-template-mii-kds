@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/medizininformatik-initiative/ig-template-mii-kds/compare/v1.3.3...v1.3.4) (2026-08-28)
+
+
+### Bug Fixes
+
+* the gh-pages root is a generated plain index ([#20](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/20)) ([07ca5e2](https://github.com/medizininformatik-initiative/ig-template-mii-kds/commit/07ca5e2aece9435506bfd8dba088f20bc9326761))
+
 ## [1.3.3](https://github.com/medizininformatik-initiative/ig-template-mii-kds/compare/v1.3.2...v1.3.3) (2026-08-28)
 
 
