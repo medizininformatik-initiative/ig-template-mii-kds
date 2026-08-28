@@ -10,7 +10,7 @@ in this repository.
 | Skill | What it does |
 | --- | --- |
 | [`wiki-consistency-check/`](wiki-consistency-check/SKILL.md) | The single convention checker: repo ↔ MII meta wiki drift plus the metadata conventions these templates adopt. |
-| [`ig-translate/`](ig-translate/SKILL.md) | Multi-language support in **template-owner scope**: the en-default language policy and its guard, the language-neutrality of the header/footer/CSS overrides, the vendored German UI strings, the verified rendering table. |
+| [`ig-translate/`](ig-translate/SKILL.md) | Multi-language support in **template-owner scope**: the en-default language policy and its guard, the language-neutrality of the header/footer/CSS overrides, the vendored German UI strings. The rendering matrix itself lives in the catalog's `fhir-ig-translation`; this skill only points at it. |
 | [`docs-steward/`](docs-steward/SKILL.md) | Checks, repairs and trims this repository's documentation — links, paths and factual claims verified against the repo itself. |
 
 Report-only by design: they propose, a human decides, and any change lands as a pull request

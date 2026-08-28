@@ -1,18 +1,15 @@
 # Code owners are requested for review automatically on every pull request.
 #
-# Deliberately EMPTY while these repositories are prototypes. Naming an
-# individual would present one person as the responsible party for an
-# MII-branded artifact, which no individual here is. Set an owner when the
-# repositories move to the medizininformatik-initiative organisation and a
-# maintaining team exists:
+# Deliberately NO ACTIVE RULE yet — but ownership is DECIDED (2026-08-28,
+# recorded in docs/org-move.md): the MII owns the template repositories
+# until 2026-12-31, NUM-DIZ from 2027-01-01 (the funded handover). No
+# GitHub team exists yet for either owner, and naming an individual would
+# present one person as the responsible party for an MII-branded artifact
+# and block reviews whenever they are unavailable; a team survives
+# personnel changes and holidays.
 #
-#   * @medizininformatik-initiative/<team-name>
+# Activate the rule once the owning team exists in this organisation:
 #
-# A team also survives personnel changes and holidays; an individual owner
-# blocks reviews whenever they are unavailable. Until then, reviews are
-# requested by hand. Tracked in docs/open-tasks.md.
-
-# ORG-MOVE TODO (2026-08-27): this repository now lives in the
-# medizininformatik-initiative organisation. Add the owning MII/NUM-DIZ team
-# here once it is named - a deliberate decision left open by the move
-# (carried from the pre-move migration-cleanup checklist; see docs/org-move.md).
+#   * @medizininformatik-initiative/<owning-team>
+#
+# Until then, reviews are requested by hand.
