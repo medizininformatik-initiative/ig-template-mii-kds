@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/medizininformatik-initiative/ig-template-mii-kds/compare/v1.3.2...v1.3.3) (2026-08-28)
+
+
+### Bug Fixes
+
+* the ig-translate rendering table points at the catalog - ownership decided ([#18](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/18)) ([afc399c](https://github.com/medizininformatik-initiative/ig-template-mii-kds/commit/afc399c767a15d5324dadaabad333eafb1233d2d))
+
 ## [1.3.2](https://github.com/forschungsgruppe-digital-health/ig-template-mii-kds/compare/v1.3.1...v1.3.2) (2026-08-20)
 
 
