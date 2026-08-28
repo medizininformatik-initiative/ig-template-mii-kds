@@ -101,28 +101,40 @@ This repository is **tooling**, so it uses **SemVer** via Release Please, runnin
 
 ### How a module consumes this template
 
-**Once the package is published**, a module picks up a release by bumping the
-pinned version in its `ig.ini` (or `sushi-config.yaml` dependency), e.g.
-`template = de.medizininformatikinitiative.template#<version>` (a released
-version from the [releases page](https://github.com/medizininformatik-initiative/ig-template-mii-kds/releases)), then rebuilding. See
-[recipes/consume-this-template-in-a-module.md](recipes/consume-this-template-in-a-module.md).
+There are three reference forms; today's default is the **URL** form:
 
-**It is not published yet** ([issue #113](../../../issues/113)), so no module pins a
-release today. Modules vendor this repository's `dev` branch instead:
+- **URL reference — the interim default (since 2026-08-28).** The module
+  template's `ig.ini` ships
+  `template = https://github.com/medizininformatik-initiative/ig-template-mii-kds`:
+  the IG Publisher fetches this repository as a zip of the released default
+  branch `main` at build time (needs network; follows `main`). **For
+  maintainers here that makes releases on `main` the surface URL-consuming
+  modules pick up immediately** — the next module build after a `dev → main`
+  merge renders with it, with no sync PR in between.
+- **Vendored fallback — offline/reproducibility.** The module template keeps
+  its `ig-template/` folder (`ig.ini`: `template = #ig-template`) as the
+  documented fallback, synced from **this repository's `dev` branch**:
+  `mii-kds-module-template` copies `package/`, `includes/`, `content/` and
+  `translations/` from `ig-template-mii-kds@dev`. Its `sync-ig-template.yml`
+  re-vendors on a schedule (Mondays 05:00 UTC) and opens a **reviewable** pull
+  request — it never auto-merges — and runs
+  `sync-ig-template.sh --check --ref dev` on every module pull request into
+  `dev`, so a module PR opened after a merge into `dev` here fails that check
+  until the sync PR lands.
+- **Published package — the endgame.** Once the package is registry-published
+  ([issue #6](../../../issues/6)), a module pins a release in its `ig.ini`:
+  `template = de.medizininformatikinitiative.template#<version>` (a released
+  version from the [releases page](https://github.com/medizininformatik-initiative/ig-template-mii-kds/releases)),
+  and adopts a newer template by bumping the version and rebuilding. Only then
+  do the URL form and the vendored fallback + sync machinery dissolve. See
+  [recipes/consume-this-template-in-a-module.md](recipes/consume-this-template-in-a-module.md).
 
-- `mii-kds-module-template` copies `package/`, `includes/`, `content/` and
-  `translations/` from `ig-template-mii-kds@dev` into its own `ig-template/`
-  folder, and its `ig.ini` points at that folder.
-- Its `sync-ig-template.yml` re-vendors on a schedule (Mondays 05:00 UTC) and
-  opens a **reviewable** pull request — it never auto-merges.
-- The same workflow runs `sync-ig-template.sh --check --ref dev` on every module
-  pull request into `dev`, so a module PR opened after a merge into `dev` here
-  fails that check until the sync PR lands.
-
-**So `dev` is a consumer-visible surface, not an internal branch.** Work in
-progress that has passed CI and review belongs there; a known-broken state does
-not, because the next sync ships it to every repository created from the
-scaffold. A module cannot pin its way out: the module template's workflow
+**So both `main` and `dev` are consumer-visible surfaces.** Releases on `main`
+are what URL-consuming modules get immediately on their next build; `dev` feeds
+the vendored fallback. Work in progress that has passed CI and review belongs
+on `dev`; a known-broken state does not, because the next sync ships it to
+every repository created from the scaffold. A module cannot pin its way out of
+the sync: the module template's workflow
 hardcodes `--ref dev` in both jobs. The two
 things that do stop the sync — setting the module's `ENABLE_TEMPLATE_SYNC`
 variable to `false`, or editing those two lines — contradict that repo's stated

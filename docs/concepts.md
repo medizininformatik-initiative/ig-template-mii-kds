@@ -16,10 +16,13 @@ A module IG does not copy any layout files. In its `ig.ini` it writes one line �
 Publisher downloads and applies this package.
 
 That is the target state. The package is not on a registry yet
-([issue #113](../../../issues/113)), so today a module *does* copy these files: it
-vendors this repository's `dev` branch into its own `ig-template/` folder and
-points `ig.ini` at that folder. Nobody pins a version, and a merge into `dev`
-here reaches modules without a release — the mechanics are in
+([issue #6](../../../issues/6)), so today a module writes this repository's
+**URL** in `ig.ini` instead, and the IG Publisher fetches the released default
+branch `main` as a zip at build time — a release here reaches URL-consuming
+modules on their next build, but nobody pins a version. As the offline/
+reproducibility fallback a module *does* copy these files: it vendors this
+repository's `dev` branch into its own `ig-template/` folder and points
+`ig.ini` at that folder — the mechanics are in
 [workflows.md](workflows.md#how-a-module-consumes-this-template), the status in
 [org-move.md](org-move.md).
 

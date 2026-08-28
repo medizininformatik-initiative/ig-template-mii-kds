@@ -1,5 +1,9 @@
 # Recipe: cut a template release
 
+> **A release is a deployment now:** since 2026-08-28 consuming modules reference
+> this repository by URL, so whatever lands on `main` is what their next build
+> fetches. Cut releases accordingly — `main` is live.
+
 **Goal.** Publish a new **SemVer** version of this template package.
 
 **Prerequisites.** Your change is merged into `dev` and the preview builds green.
