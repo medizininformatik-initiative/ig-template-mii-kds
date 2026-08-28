@@ -35,7 +35,7 @@ Multi-language support is split across the two template repositories:
   narrative pages for a concrete IG, including the supporting tooling. The
   skill is `fhir-ig-translation`. This skill does not install it for you —
   **precondition**, to be run by the user:
-  `npx skills add https://github.com/forschungsgruppe-digital-health/agent-skills/tree/v0.12.0 --skill fhir-ig-translation --agent claude-code codex --global --yes`
+  `npx skills add https://github.com/forschungsgruppe-digital-health/agent-skills/tree/<release> --skill fhir-ig-translation --agent claude-code codex --global --yes`
   (pin with the `/tree/<ref>` form; `owner/repo@<tag>` does *not* pin — `@`
   introduces a skill *name* there and the install silently comes from the
   default branch). It began as the `ig-translate` skill of

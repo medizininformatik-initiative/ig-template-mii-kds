@@ -100,7 +100,7 @@ which is their single source of truth:
 | Migrate a Simplifier/Forge-published KDS module onto the module scaffold | `mii-ig-migration` | Never local |
 
 ```bash
-CATALOG=https://github.com/forschungsgruppe-digital-health/agent-skills/tree/v0.12.0
+CATALOG=https://github.com/forschungsgruppe-digital-health/agent-skills/tree/<release>
 npx skills add "$CATALOG" --list
 npx skills add "$CATALOG" --skill fhir-ig-analysis fhir-ig-translation --agent claude-code codex --global --yes
 ```
