@@ -10,7 +10,7 @@
   "id" : "de.medizininformatikinitiative.template.preview",
   "language" : "en",
   "url" : "https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview",
-  "version" : "1.3.2",
+  "version" : "1.3.3",
   "name" : "MIIKDSTemplatePreview",
   "title" : "MII KDS IG Template — Preview",
   "_title" : {
@@ -27,7 +27,7 @@
     }]
   },
   "status" : "draft",
-  "date" : "2026-08-28T05:43:02+00:00",
+  "date" : "2026-08-28T09:59:57+00:00",
   "publisher" : "NUM-DIZ",
   "_publisher" : {
     "extension" : [{

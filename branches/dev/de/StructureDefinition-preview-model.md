@@ -1,4 +1,4 @@
-# Preview Model - MII KDS IG Template — Preview v1.3.2
+# Preview Model - MII KDS IG Template — Preview v1.3.3
 
 * [**Inhaltsverzeichnis**](toc.md)
 * [**Artefaktübersicht**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Offizielle URL*:https://github.com/medizininformatik-initiative/ig-template-mii-kds/StructureDefinition/preview-model | *Version*:1.3.2 |
+| *Offizielle URL*:https://github.com/medizininformatik-initiative/ig-template-mii-kds/StructureDefinition/preview-model | *Version*:1.3.3 |
 | Draft Stand: 2026-08-28 | *Maschinenlesbarer Name*:PreviewModel |
 
  
@@ -61,11 +61,11 @@ Weitere Repräsentationen des Profils: [CSV](../StructureDefinition-preview-mode
   "resourceType" : "StructureDefinition",
   "id" : "preview-model",
   "url" : "https://github.com/medizininformatik-initiative/ig-template-mii-kds/StructureDefinition/preview-model",
-  "version" : "1.3.2",
+  "version" : "1.3.3",
   "name" : "PreviewModel",
   "title" : "Preview Model",
   "status" : "draft",
-  "date" : "2026-08-28T05:43:02+00:00",
+  "date" : "2026-08-28T09:59:57+00:00",
   "publisher" : "NUM-DIZ",
   "_publisher" : {
     "extension" : [{
