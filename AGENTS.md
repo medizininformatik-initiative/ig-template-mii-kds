@@ -74,10 +74,11 @@ before doing the corresponding task by hand.
   — **the single convention checker**: repo ↔ MII meta wiki drift plus the
   metadata conventions these templates adopt; report-only, PRs target `dev`.
 - [`skills/ig-translate/`](skills/ig-translate/SKILL.md) — multi-language
-  support in template-owner scope: en-default with a German translation, the
-  verified rendering table, i18n conventions, language-neutrality rules for
-  the template's overrides. The guide-facing translate/harvest workflow is
-  **not** here — it is `fhir-ig-translation` in the org catalog (below).
+  support in template-owner scope: en-default with a German translation, i18n
+  conventions, language-neutrality rules for the template's overrides, and the
+  verification obligations for this repo's toolchain pins. The rendering table
+  and the guide-facing translate/harvest workflow are **not** here — both live
+  in `fhir-ig-translation` in the org catalog (below).
 - [`skills/docs-steward/`](skills/docs-steward/SKILL.md) — checks, repairs and
   trims this repository's documentation: verifies every link, path and factual
   claim against the repo itself, reduces the docs to what create/modify/maintain
