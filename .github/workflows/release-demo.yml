@@ -1,26 +1,27 @@
 # Released-demo build + GitHub Pages publication.
 #
-# Purpose:   render the demo that the Pages landing page advertises as "the
-#            current release", FROM THE RELEASED TAG, and publish it to
-#            gh-pages/demo/<tag>/ together with the landing-page links that
-#            point at it. Replaces a manual promotion step.
+# Purpose:   render the demo that the Pages root index lists as "the latest
+#            release", FROM THE RELEASED TAG, publish it to
+#            gh-pages/demo/<tag>/, and regenerate the root index so it lists
+#            it. Replaces a manual promotion step.
 #
 # THE BUG THIS FIXES: the demo used to be copied by hand out of a feature-branch
 #            preview built BEFORE Release Please bumped the version, so
 #            demo/v0.5.1/en/index.html rendered "… — Preview v0.5.0". The path
-#            claimed one release, the content another, and the landing page
-#            linked it as the release. Nothing here is hand-promoted: the build
-#            checks out the TAG, the IG's own `version` is pinned to that tag
-#            before SUSHI runs, and the render is verified to carry it.
+#            claimed one release, the content another, and the root page linked
+#            it as the release. Nothing here is hand-promoted: the build checks
+#            out the TAG, the IG's own `version` is pinned to that tag before
+#            SUSHI runs, and the render is verified to carry it. The root index
+#            is GENERATED from the gh-pages tree (scripts/gen-pages-index.mjs),
+#            so it can only ever link a demo that is actually deployed.
 #
 # Triggers:  release: published (the normal path — Release Please's release PR
 #            is merged by a human, the release is published, this runs), plus
 #            workflow_dispatch to re-render a given tag (input `tag`, e.g. after
 #            a toolchain bump). A PRE-RELEASE is skipped on the release trigger:
-#            it is not "the current release" and must not move the landing-page
-#            links. Dispatch can still render one — with
-#            `update_landing_page: false` it publishes demo/<tag>/ without
-#            repointing the page.
+#            it is not "the current release" and must not move the root index.
+#            Dispatch can still render one — with `update_landing_page: false`
+#            it publishes demo/<tag>/ without regenerating the index.
 #
 # Toggle:    vars.ENABLE_RELEASE_DEMO — ON by default; set the repo variable to
 #            'false' to skip the job (it then shows as "skipped", not failed).
@@ -35,10 +36,11 @@
 #            gate. The gate is upstream and unchanged: Release Please's release
 #            PR is merged by a human and the GitHub Release is published by a
 #            human; only then does this run. It writes ONLY under
-#            gh-pages/demo/<tag>/ plus gh-pages/index.html — the site root's
-#            other content and any version-like path stay untouched, as does
-#            branches/ (the preview surface). Formal FHIR publication is a
-#            different thing entirely and is not performed here.
+#            gh-pages/demo/<tag>/ plus the generated gh-pages/index.html — the
+#            site root's other content and any version-like path stay
+#            untouched, as does branches/ (the preview surface). Formal FHIR
+#            publication is a different thing entirely and is not performed
+#            here.
 #
 # Retention: older demo/<tag>/ directories are KEPT, never pruned. They are
 #            permanent, externally linkable renderings of past releases, and the
@@ -61,7 +63,7 @@ on:
         required: true
         type: string
       update_landing_page:
-        description: "Repoint the gh-pages landing page at this tag"
+        description: "Regenerate the gh-pages root index after publishing"
         required: false
         default: true
         type: boolean
@@ -72,13 +74,13 @@ on:
         required: true
         type: string
       update_landing_page:
-        description: "Repoint the gh-pages landing page at this tag"
+        description: "Regenerate the gh-pages root index after publishing"
         required: false
         default: true
         type: boolean
 
 permissions:
-  contents: write # push the demo + landing page to the gh-pages branch
+  contents: write # push the demo + generated root index to the gh-pages branch
 
 concurrency:
   # OWN lane, not the shared gh-pages-writes group. In a shared group GitHub
@@ -120,7 +122,7 @@ jobs:
         run: |
           set -euo pipefail
           if [ "${IS_PRERELEASE:-false}" = "true" ]; then
-            echo "::notice::${RELEASE_TAG} is a pre-release — skipping the release demo. The landing page advertises the current stable release; dispatch this workflow manually to render a pre-release under demo/<tag>/."
+            echo "::notice::${RELEASE_TAG} is a pre-release — skipping the release demo. The root index lists the latest release; dispatch this workflow manually to render a pre-release under demo/<tag>/."
             echo "skip=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -134,7 +136,7 @@ jobs:
             echo "::error::'${tag}' is not a vMAJOR.MINOR.PATCH release tag."
             exit 1
           fi
-          # `release: published` always updates the page; dispatch may opt out.
+          # `release: published` always regenerates the index; dispatch may opt out.
           update_page="true"
           if [ -z "${RELEASE_TAG:-}" ] && [ "${INPUT_UPDATE_PAGE}" = "false" ]; then
             update_page="false"
@@ -143,11 +145,11 @@ jobs:
           echo "tag=${tag}" >> "$GITHUB_OUTPUT"
           echo "version=${tag#v}" >> "$GITHUB_OUTPUT"
           echo "update_page=${update_page}" >> "$GITHUB_OUTPUT"
-          echo "Rendering demo for ${tag} (landing page update: ${update_page})."
+          echo "Rendering demo for ${tag} (root-index regeneration: ${update_page})."
 
       # Two checkouts on purpose:
       #   * the workspace root is THIS ref — it supplies the publishing tooling
-      #     (scripts/update-demo-links.mjs). Taking it from the tag instead
+      #     (scripts/gen-pages-index.mjs). Taking it from the tag instead
       #     would make re-rendering an OLD release impossible, because that tag
       #     predates the tooling.
       #   * release-src/ is the TAG — the only thing that gets built.
@@ -330,7 +332,7 @@ jobs:
             release-src/output/index.html
           if-no-files-found: warn
 
-      - name: Publish to gh-pages/demo/<tag>/ and repoint the landing page
+      - name: Publish to gh-pages/demo/<tag>/ and regenerate the root index
         id: publish
         if: ${{ steps.tag.outputs.skip != 'true' }}
         env:
@@ -368,20 +370,16 @@ jobs:
           touch gh-pages/.nojekyll
 
           if [ "${UPDATE_PAGE}" = "true" ]; then
-            if [ ! -f gh-pages/index.html ]; then
-              echo "::error::gh-pages has no index.html to repoint. Restore the hand-authored landing page, or dispatch with update_landing_page=false to publish demo/${TAG}/ only."
-              exit 1
-            fi
-            # Conservative, anchored rewrite of the HAND-AUTHORED landing page —
-            # it is never regenerated. The script exits non-zero if an anchor is
-            # missing, so a page that silently keeps linking the previous
-            # release fails the job instead of shipping.
-            node scripts/update-demo-links.mjs \
-              --file gh-pages/index.html \
-              --version "${TAG}" \
-              --repo-url "https://github.com/${REPO}" | tee "${RUNNER_TEMP}/landing-diff.txt"
+            # Regenerate the plain root index from what is actually deployed.
+            # The generator CREATES gh-pages/index.html when it is missing (no
+            # index-to-repoint guard needed any more) and lists ONLY the dev
+            # preview plus the highest-semver demo/<tag>/ — which after the
+            # copy above is normally ${TAG}, unless an OLD tag is being
+            # re-rendered, in which case the index correctly keeps listing the
+            # latest release. Everything else stays deployed but unlisted.
+            node scripts/gen-pages-index.mjs gh-pages | tee "${RUNNER_TEMP}/index-gen.txt"
           else
-            echo "::notice::update_landing_page=false — demo/${TAG}/ published without repointing the landing page."
+            echo "::notice::update_landing_page=false — demo/${TAG}/ published without regenerating the root index."
           fi
 
           cd gh-pages
@@ -417,14 +415,14 @@ jobs:
             echo "### Release demo — ${TAG}"
             echo ""
             echo "- [Rendered demo IG](${url})"
-            echo "- Landing page: https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO#*/}/"
+            echo "- Root index: https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO#*/}/"
             echo "- Terminology: ${{ steps.tx.outputs.mode }}"
             echo ""
-            if [ -s "${RUNNER_TEMP}/landing-diff.txt" ]; then
-              echo "<details><summary>Landing-page changes</summary>"
+            if [ -s "${RUNNER_TEMP}/index-gen.txt" ]; then
+              echo "<details><summary>Root-index regeneration</summary>"
               echo ""
-              echo '```diff'
-              cat "${RUNNER_TEMP}/landing-diff.txt"
+              echo '```text'
+              cat "${RUNNER_TEMP}/index-gen.txt"
               echo '```'
               echo ""
               echo "</details>"

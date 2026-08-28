@@ -16,7 +16,9 @@
 #            a partial secret set falls back too (scripts/terminology-fallback.test.mjs).
 # Human-gated: nothing here publishes formally. The site root and version-like
 #            paths on gh-pages are RESERVED for the gated -go-publish output;
-#            this workflow only ever writes under branches/<branch>/.
+#            this workflow writes under branches/<branch>/ plus ONE root file:
+#            the generated index.html (scripts/gen-pages-index.mjs), which it
+#            regenerates on every deploy so the listing heals itself.
 name: IG preview
 
 on:
@@ -216,6 +218,12 @@ jobs:
           printf '%s\n' "${BRANCH}" > "${branch_dir}/.branch-name"
           # Serve the IG output verbatim — never let Pages re-run Jekyll on it.
           touch gh-pages/.nojekyll
+
+          # Regenerate the plain root index (creates it when missing): it lists
+          # ONLY branches/dev/ and the latest demo/<tag>/, so the listing heals
+          # on every preview deploy. Other previews and older demos stay
+          # deployed but deliberately unlisted.
+          if [ -f scripts/gen-pages-index.mjs ]; then node scripts/gen-pages-index.mjs gh-pages; else echo "gen-pages-index.mjs not on this branch yet - root index unchanged (rebase onto dev/main to heal it)"; fi
 
           cd gh-pages
           # Size guard: GitHub Pages officially supports up to 1 GB.
