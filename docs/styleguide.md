@@ -31,7 +31,11 @@ language-aware base both MII reference repos use. The rules:
   base hardcodes the literal "Language:" instead of reading its own
   stringsBase catalog, so the label never translated — the override reads the
   catalog with the English literal as fallback; delete it the day the pinned
-  base reads its catalog there),
+  base reads its catalog there), `includes/template-page-md.html` (verbatim
+  copy fixing the translation notice: the base prints it with an inline style
+  instead of `ig-highlight`, and only on pages without a table of contents —
+  the override uses `ig-highlight ig-highlight-grey` in both branches; delete
+  it the day the pinned base does the same),
   `includes/structure-tabs.html` (an added authoring include with no base
   counterpart — [recipe](recipes/tab-an-artifact-structure.md)), four CSS
   files (`content/assets/css/bootstrap-accessibility.css` — the vendored
