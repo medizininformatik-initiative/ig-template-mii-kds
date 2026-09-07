@@ -306,16 +306,15 @@ html[data-fontsize="2"] #segment-footer { zoom: 1.25; }
   --mii-table-header-text-color: var(--ig-table-header-text-color);
 }
 
-/* ── Publisher sql tables and JSON blocks ────────────────────────────────────
-   table.grid is what the IG Publisher's {% sql %} directive emits; fhir.css
-   gives it borders but no width, so it shrinks to its content like the
-   narrative tables above. Same rule, same reason.
+/* ── Publisher JSON blocks ───────────────────────────────────────────────────
+   (The publisher's own tables — table.grid from {% sql %} included — stay
+   unstyled here on purpose, styleguide §5; a module that wants its sql tables
+   full-width gives them a class of its own via the directive's "class".)
    The publisher marks SOME of its own JSON renderings (<pre class="json">)
    with Prism's class="language-json" — measured: one of four otherwise
    identical DocumentReference examples — and Prism then recolours that block
    (strings green, punctuation grey) while its siblings keep the publisher's
    inline colouring. Inside pre.json the Prism tokens inherit the publisher's
    colours, so every JSON block looks the same. */
-table.grid { width: 100%; }
 pre.json code[class*="language-"] { color: inherit; text-shadow: none; }
 pre.json code[class*="language-"] .token { color: inherit; background: transparent; text-shadow: none; font-weight: inherit; }
