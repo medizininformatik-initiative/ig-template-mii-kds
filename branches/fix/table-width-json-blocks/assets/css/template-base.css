@@ -316,5 +316,9 @@ html[data-fontsize="2"] #segment-footer { zoom: 1.25; }
    (strings green, punctuation grey) while its siblings keep the publisher's
    inline colouring. Inside pre.json the Prism tokens inherit the publisher's
    colours, so every JSON block looks the same. */
+/* Prism.js also copies its language class onto the parent <pre> at load time, so
+   pre[class*="language-"] rules replace fhir.css's pre.json look (green #EFFFEF,
+   11px, 5px padding) with Prism's theme; this puts the publisher's values back. */
+pre.json[class*="language-"] { background: #EFFFEF; padding: 5px; margin: 0 0 10px; font-size: 11px; text-shadow: none; }
 pre.json code[class*="language-"] { color: inherit; text-shadow: none; }
 pre.json code[class*="language-"] .token { color: inherit; background: transparent; text-shadow: none; font-weight: inherit; }

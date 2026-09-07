@@ -41,7 +41,7 @@ Other representations of profile: [CSV](../StructureDefinition-preview-model.csv
   "name" : "PreviewModel",
   "title" : "Preview Model",
   "status" : "draft",
-  "date" : "2026-09-07T15:10:01+00:00",
+  "date" : "2026-09-07T15:18:56+00:00",
   "publisher" : "NUM-DIZ",
   "_publisher" : {
     "extension" : [{
