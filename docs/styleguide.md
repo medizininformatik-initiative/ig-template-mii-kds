@@ -32,6 +32,10 @@ language-aware base both MII reference repos use. The rules:
   stringsBase catalog, so the label never translated — the override reads the
   catalog with the English literal as fallback; delete it the day the pinned
   base reads its catalog there),
+  `layouts/layout-examplescenario.html` (verbatim copy fixing two publisher
+  rendering defects on ExampleScenario pages: PlantUML processing instructions
+  shown as text, and English rendering phrases on German pages — delete it when
+  the publisher fixes both),
   `includes/structure-tabs.html` (an added authoring include with no base
   counterpart — [recipe](recipes/tab-an-artifact-structure.md)), four CSS
   files (`content/assets/css/bootstrap-accessibility.css` — the vendored
