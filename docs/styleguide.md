@@ -43,7 +43,15 @@ language-aware base both MII reference repos use. The rules:
   UI catalogs in `translations/`, and four JS assets:
   `content/assets/js/lang-redirects.js`, `font-size-control.js` and
   `back-to-top.js` (both §8), and the vendored
-  `bootstrap-accessibility.min.js` (pinned byte-exact, §8).
+  `bootstrap-accessibility.min.js` (pinned byte-exact, §8) — plus, since
+  2026-09-08, ONE template-contributed page: `content/validate.html` with
+  its `content/assets/js/validate.js` (the instance-validation page,
+  [concepts § 7](concepts.md#7-the-instance-validation-page); rendered by
+  Jekyll from the template's `content/` folder at the site root and in every
+  language folder, guarded by `scripts/validate.test.mjs`). It made the two
+  overridden fragments root-aware: `fragment-footer.html` prefixes the
+  root-relative `qa.html` with `../` only from a language folder, and
+  `fragment-language.html` renders no switcher on a root page.
   > **The two same-path replacements are on borrowed time.**
   > `content/assets/js/lang-redirects.js` and `content/assets/ico/favicon.png`
   > win only because a child template's file at the same path beats the base's.
@@ -271,6 +279,14 @@ recorded limitation, §7.)
   including "Table of Contents".
 - The only other literal texts allowed are bare URLs and `alt` texts quoting
   the proper name of the logo variant shown.
+- **The instance-validation page is the one body-copy page the template
+  ships** (`content/validate.html`): template content cannot be translated
+  through the IG's `.po` mechanism, so the file carries the English and the
+  German text and selects one per rendered copy from `page.dir` (German in
+  `de/`, English everywhere else; the root copy follows the IG's default
+  language). Its chrome is included with the copy's language. Keep both
+  texts in step when editing — `scripts/validate.test.mjs` checks that
+  every route and both boxes appear in each.
 - The HL7 trademark attribution in the footer stays **English on every
   language's pages**: it is HL7's prescribed legal formula, not translatable
   UI text (rendered because the header shows the FHIR flame on every page —

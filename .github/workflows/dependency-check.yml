@@ -48,7 +48,8 @@ jobs:
             scripts/narrative-table-styles.test.mjs \
             scripts/toolchain-pins.test.mjs \
             scripts/gen-pages-index.test.mjs \
-            scripts/brand-switch.test.mjs
+            scripts/brand-switch.test.mjs \
+            scripts/validate.test.mjs
 
       - name: Run checker
         id: check

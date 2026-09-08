@@ -10,6 +10,11 @@ check the language-aware header and footer.
 What the template is and how a module uses it is described in the repository's
 `README.md`.
 
+The template also contributes one page to every guide it renders:
+[Validate an instance](validate.html) — the Simplifier-substitute for
+checking an implementer's own FHIR instance against the module (also linked
+in the footer). This preview shows it with the preview's own package preset.
+
 ### Highlight boxes (background-colour demo)
 
 The template ships reusable, purpose-neutral CSS classes for calling out content

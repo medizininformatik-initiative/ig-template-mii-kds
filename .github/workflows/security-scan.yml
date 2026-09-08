@@ -74,7 +74,10 @@ jobs:
   # guards the NUM-DIZ/MII brand switch: complete palette override, exact-match
   # guards ('mii' selects MII; everything else renders the NUM-DIZ default),
   # WCAG AA recomputed from the shipped hex values, and the derived English
-  # combo logo's provenance marker.
+  # combo logo's provenance marker. validate.test.mjs guards the instance-
+  # validation page: the request body against the verified validator-wrapper
+  # API, the escaping issue table, the default-URL fallback, the root-aware
+  # footer link and the no-external-assets rule.
   # Offline, no npm install, well under a second.
   tooling-tests:
     runs-on: ubuntu-latest
@@ -96,7 +99,8 @@ jobs:
             scripts/narrative-table-styles.test.mjs \
             scripts/toolchain-pins.test.mjs \
             scripts/gen-pages-index.test.mjs \
-            scripts/brand-switch.test.mjs
+            scripts/brand-switch.test.mjs \
+            scripts/validate.test.mjs
 
   osv:
     if: ${{ vars.ENABLE_SECURITY_SCAN != 'false' }} # toggle: ON by default
