@@ -133,6 +133,15 @@ table:not([class]):not([style]):not([border]):not([data-fhir]) th {
   height: auto;
 }
 
+/* Publisher-generated PlantUML diagrams (ExampleScenario sequence and class diagrams) are
+   inlined as <svg> with a fixed pixel width AND height in the style attribute, so unlike an
+   <img> they ignore the img guard above and overflow the content column. Cap the width and let
+   the height follow the viewBox; the inline height needs !important to yield. */
+#segment-content svg[data-diagram-type] {
+  max-width: 100%;
+  height: auto !important;
+}
+
 /* ── structure-tabs include ── spacing for the tabbed structure view ──────── */
 .structure-tabs { margin: 1rem 0; }
 .structure-tabs .tab-content {
