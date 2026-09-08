@@ -194,3 +194,65 @@ test("CI lists this suite by name (scripts/README.md rule)", () => {
   }
   assert.ok(read("scripts/README.md").includes("validate.test.mjs"));
 });
+
+// ---- the network flow, every failure path with a fake fetch ----------------
+const respond = (ok, status, jsonBody, text = "") => async () => ({
+  ok, status,
+  json: async () => { if (jsonBody === "NOT_JSON") throw new SyntaxError("Unexpected token"); return jsonBody; },
+  text: async () => text,
+});
+const body = { cliContext: { sv: "4.0.1", igs: ["x#1"] }, filesToValidate: [] };
+
+test("runValidation: a 200 JSON answer resolves issues, summary and the minted session", async () => {
+  const live = { sessionId: "s-1", outcomes: [{ fileInfo: { fileName: "instance.json" },
+    issues: [{ level: "error", line: 3, col: 5, location: "Patient", message: "bad" },
+             { level: "warning", line: 1, col: 1, location: "Patient", message: "meh" }] }] };
+  const v1 = await v.runValidation({ url: "https://x/validate", body, fetchImpl: respond(true, 200, live) });
+  assert.equal(v1.issues.length, 2);
+  assert.equal(v1.summary.error, 1);
+  assert.equal(v1.summary.warning, 1);
+  assert.equal(v1.sessionId, "s-1");
+});
+
+test("runValidation: a non-2xx answer rejects with kind http and the status + body text", async () => {
+  await assert.rejects(
+    v.runValidation({ url: "https://x/validate", body, fetchImpl: respond(false, 500, null, "boom") }),
+    (e) => e.kind === "http" && /HTTP 500: boom/.test(e.message));
+});
+
+test("runValidation: a non-JSON 200 answer rejects with kind parse", async () => {
+  await assert.rejects(
+    v.runValidation({ url: "https://x/validate", body, fetchImpl: respond(true, 200, "NOT_JSON") }),
+    (e) => e.kind === "parse");
+});
+
+test("runValidation: a network failure rejects with kind network carrying the cause", async () => {
+  await assert.rejects(
+    v.runValidation({ url: "https://x/validate", body, fetchImpl: async () => { throw new TypeError("Failed to fetch"); } }),
+    (e) => e.kind === "network" && /Failed to fetch/.test(e.message));
+});
+
+test("runValidation: an aborted request rejects with kind timeout", async () => {
+  const abort = Object.assign(new Error("aborted"), { name: "AbortError" });
+  await assert.rejects(
+    v.runValidation({ url: "https://x/validate", body, fetchImpl: async () => { throw abort; } }),
+    (e) => e.kind === "timeout");
+});
+
+test("runValidation: the request is a JSON POST carrying the body verbatim", async () => {
+  let seen = null;
+  await v.runValidation({ url: "https://x/validate", body,
+    fetchImpl: async (url, init) => { seen = { url, init }; return (await respond(true, 200, { outcomes: [] })()); } });
+  assert.equal(seen.url, "https://x/validate");
+  assert.equal(seen.init.method, "POST");
+  assert.equal(seen.init.headers["Content-Type"], "application/json");
+  assert.deepEqual(JSON.parse(seen.init.body), body);
+});
+
+test("page: the live box never submits without JavaScript - no form action, a noscript notice per copy", () => {
+  const html = read("content/validate.html");
+  assert.equal((html.match(/<form class="ig-validate"/g) || []).length, 2);
+  assert.ok(!/<form[^>]*action=/.test(html), "no form action");
+  assert.equal((html.match(/<noscript>/g) || []).length, 2);
+});
+
