@@ -64,6 +64,7 @@ The paths mirror the base template, because the IG Publisher resolves them by na
 | --- | --- |
 | `package/` | The template package manifest — what the IG Publisher applies |
 | `includes/` | Header, footer and CSS fragments that override the base template |
+| `layouts/` | Page layouts that override the base template (ExampleScenario) |
 | `content/` | Branding assets: CSS, logo, favicon |
 | `translations/` | German UI-string catalogs for the base template |
 | `input/`, `ig.ini` | The bundled preview IG (so branding changes are reviewable) |
