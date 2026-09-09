@@ -121,11 +121,42 @@ implementer pastes their **own** FHIR instance and checks it against
 - a terminology caveat: the public `tx.fhir.org` may lack the German SNOMED CT
   extension — point `-tx` at SU-TermServ/Ontoserver for the module's value
   sets;
-- a **live box**: textarea + optional profile canonical + *Validate*, which
-  `POST`s to `<validator>/validate` with the module's package preset and
-  renders the issues (severity, line:col, location, message) as a table. A
-  visible note says where the text is sent. The page loads nothing external;
-  that POST is its only outbound call.
+- a **live box**: textarea + profile picker + optional profile canonical +
+  *Validate*, which `POST`s to `<validator>/validate` with the module's
+  package preset and renders the issues (severity, line:col, location,
+  message) as a table. A visible note says where the text is sent. The page
+  loads nothing external; that POST is its only outbound call.
+
+**The profile picker** is built at build time, not in the browser: the
+publisher writes `temp/pages/_data/structuredefinitions.json` for **this
+guide's own** StructureDefinitions, and the page renders a `<select>` from it
+with Liquid (`where_exp` on `kind == 'resource' and derivation ==
+'constraint' and abstract != true`, sorted by title, label from
+`titlelang.<lang>`). Choosing an entry copies its canonical into the text
+box, which stays the single source of the request — so a canonical from a
+**dependency** package (those are in no `_data` file) can still be pasted by
+hand. A module whose guide has no resource profile — one with only a logical
+model — renders no picker at all, only the text box. Three details are load-
+bearing and were each measured with publisher 2.3.2:
+
+- the filter is `kind == 'resource'`, not "everything except logical models":
+  an extension or a datatype profile is `kind == 'complex-type'`, and handing
+  one to the validator answers *"Specified profile type was Extension, but
+  found type Patient"*;
+- `<select>` and not `<datalist>`, and a plain `<p>` the script removes and
+  not `<noscript>`: the publisher's HTML inspector reports any element it does
+  not know as a QA warning (`Illegal HTML: Illegal HTML element: …`), and it
+  knows neither `datalist` nor `noscript`;
+- `site.data.structuredefinitions` must be converted with `where_exp` before
+  it is sorted — a `sort` straight on the id→object map aborts the Jekyll run,
+  and so does a `sort` on a missing file, hence the `{% assign %}` guard.
+
+**Two validator failures carry no validation issue** and would otherwise
+surface as a bare `HTTP 500` (both probed live on 2026-09-09): a package no
+registry serves answers with the body *"Unable to resolve package id …"* — an
+unpublished preview build is the usual cause — and a profile canonical the
+loaded packages do not define answers with an **empty** body. `failureHint()`
+maps the two to their own messages (`data-msg-nopackage` / `data-msg-noprofile`).
 
 > **Why it lives here and not in each module:** the template reaches every
 > URL-referencing module on its next build (§ 1), so one page here is one

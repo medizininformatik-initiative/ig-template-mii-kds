@@ -279,6 +279,14 @@ recorded limitation, §7.)
   including "Table of Contents".
 - The only other literal texts allowed are bare URLs and `alt` texts quoting
   the proper name of the logo variant shown.
+- **The publisher's HTML inspector limits which elements a template page may
+  use.** It converts every output page to Markdown and reports an element it
+  does not know as `Illegal HTML: Illegal HTML element: <name>` — a QA
+  warning per page copy, in every module that builds against the template.
+  `form`, `input`, `select`, `option`, `textarea`, `button` and `label` pass;
+  `datalist`, `optgroup` and `noscript` do not. Where a no-JavaScript notice
+  is needed, render a plain element and let the script remove it (see
+  `content/validate.html` + `content/assets/js/validate.js`).
 - **The instance-validation page is the one body-copy page the template
   ships** (`content/validate.html`): template content cannot be translated
   through the IG's `.po` mechanism, so the file carries the English and the

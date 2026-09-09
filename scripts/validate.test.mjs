@@ -249,10 +249,69 @@ test("runValidation: the request is a JSON POST carrying the body verbatim", asy
   assert.deepEqual(JSON.parse(seen.init.body), body);
 });
 
-test("page: the live box never submits without JavaScript - no form action, a noscript notice per copy", () => {
+test("page: the live box never submits without JavaScript - no form action, a no-JS notice per copy", () => {
   const html = read("content/validate.html");
   assert.equal((html.match(/<form class="ig-validate"/g) || []).length, 2);
   assert.ok(!/<form[^>]*action=/.test(html), "no form action");
-  assert.equal((html.match(/<noscript>/g) || []).length, 2);
+  assert.equal((html.match(/class="ig-validate-status ig-validate-nojs"/g) || []).length, 2);
+  // <noscript> is an "Illegal HTML element" to the publisher's inspector, so
+  // the notice is a plain <p> the script removes; only the header comment
+  // that records this rule may still name the element.
+  assert.ok(!/<noscript/.test(html), "no <noscript> element");
+  const js = read("content/assets/js/validate.js");
+  assert.match(js, /querySelectorAll\(".ig-validate-nojs"\)/);
+  assert.match(js, /removeChild/);
+});
+
+test("page: the profile picker lists this guide's own resource profiles, per language, and the free-text box stays", () => {
+  const html = read("content/validate.html");
+  // built from publisher data at build time - no runtime package parsing
+  assert.match(html, /site\.data\.structuredefinitions \| where_exp: "sd", "sd\.kind == 'resource' and sd\.derivation == 'constraint' and sd\.abstract != true"/);
+  assert.match(html, /\{% assign own_profiles = "" \| split: "" %\}/);          // guard for a build without the file
+  // 4 guards: the picker block and the label's hint, in each language copy
+  assert.equal((html.match(/\{% if own_profiles\.size > 0 %\}/g) || []).length, 4);
+  assert.equal((html.match(/\{% if own_profiles\.size > 0 %\}  <div class="form-group">/g) || []).length, 2);
+  assert.equal((html.match(/<select id="ig-validate-profile-pick-(en|de)" name="profile-pick"/g) || []).length, 2);
+  assert.match(html, /<option value="\{\{ sd\.url \| escape \}\}">/);
+  assert.match(html, /sd\.titlelang\.en \| default: sd\.title/);
+  assert.match(html, /sd\.titlelang\.de \| default: sd\.title/);
+  // the picker never replaces the free-text box: a dependency's profile is
+  // not in site.data.structuredefinitions
+  assert.equal((html.match(/<input id="ig-validate-profile-(en|de)" name="profile"/g) || []).length, 2);
+  assert.ok(!/<datalist/.test(html), "a datalist is an Illegal HTML element to the publisher");
+  const js = read("content/assets/js/validate.js");
+  assert.match(js, /select\[name=profile-pick\]/);
+  assert.match(js, /profileInput\.value = profilePick\.value/);
+});
+
+test("failureHint: the two issue-less wrapper failures get their own message, everything else the generic one", () => {
+  const httpErr = (status, body) => Object.assign(new Error("x"), { kind: "http", status, body });
+  assert.equal(v.failureHint(httpErr(500, "Unable to resolve package id de.x#1.0.0")), "package");
+  assert.equal(v.failureHint(httpErr(500, "unable to RESOLVE PACKAGE id de.x#1.0.0")), "package");
+  assert.equal(v.failureHint(httpErr(500, "")), "profile");       // empty body: java.lang.Error escaped
+  assert.equal(v.failureHint(httpErr(500, "   ")), "profile");
+  assert.equal(v.failureHint(httpErr(500, "something else")), "");
+  assert.equal(v.failureHint(httpErr(400, "")), "");
+  assert.equal(v.failureHint(Object.assign(new Error("x"), { kind: "timeout" })), "");
+  assert.equal(v.failureHint(null), "");
+});
+
+test("runValidation: an http rejection carries the status and the body for failureHint", async () => {
+  await assert.rejects(
+    v.runValidation({ url: "https://x/validate", body, fetchImpl: respond(false, 500, null, "") }),
+    (e) => e.kind === "http" && e.status === 500 && e.body === "" && v.failureHint(e) === "profile");
+  await assert.rejects(
+    v.runValidation({ url: "https://x/validate", body,
+      fetchImpl: respond(false, 500, null, "Unable to resolve package id de.x#1.0.0") }),
+    (e) => v.failureHint(e) === "package");
+});
+
+test("page: both language forms carry the messages for the two issue-less failures", () => {
+  const html = read("content/validate.html");
+  assert.equal((html.match(/data-msg-noprofile="/g) || []).length, 2);
+  assert.equal((html.match(/data-msg-nopackage="/g) || []).length, 2);
+  const js = read("content/assets/js/validate.js");
+  assert.match(js, /d\.msgNopackage/);
+  assert.match(js, /d\.msgNoprofile/);
 });
 
