@@ -4,7 +4,7 @@
 // key, the HTML-escaping issue table, the default-URL fallback), and the
 // page/fragment contract - both language texts selected per copy (the
 // publisher renders the template's content/ once at the root and once per
-// language folder), the four routes, the data-protection box, the
+// language folder), the six lettered sections, the data-protection box, the
 // folder-relative footer link, the root-aware QA link and language switcher,
 // no external assets, and the CI test lists naming this file.  Run: node --test scripts/validate.test.mjs
 import { test } from "node:test";
@@ -117,7 +117,7 @@ test("issue renderer: flattens the live response, maps level -> severity, escape
   assert.ok(html.includes("&lt;script&gt;alert(1)&lt;/script&gt; &amp; &quot;quoted&quot;"));
   assert.ok(html.includes("<th>Schweregrad</th><th>Zeile:Spalte</th><th>Ort</th><th>Meldung</th>"), "labels used");
   assert.ok(html.includes("<td>3:4</td>"), "line:col");
-  assert.ok(html.includes('class="ig-validate-error"'));
+  assert.ok(html.includes('class="ig-validate-error danger"'), "own hook first, Bootstrap tint second");
   const empty = v.renderIssuesTable([], { none: "Keine Meldungen" });
   assert.ok(empty.includes('<td colspan="4">Keine Meldungen</td>'), "explicit no-issues row");
 });
@@ -131,7 +131,7 @@ test("the JS header records the verified API facts and the removal note", () => 
   assert.match(js, /typeof document !== "undefined"/, "browser bootstrap guarded");
 });
 
-test("page: both language texts selected per copy, the module preset, the four routes, the two boxes, the live box note", () => {
+test("page: both language texts selected per copy, the module preset, the routes, the two boxes, the live box note", () => {
   assert.match(page, /^---\n---\n/, "front matter so Jekyll renders it");
   assert.ok(page.includes("{% assign folderlang = page.dir | remove: '/' %}"), "the copy knows its folder");
   assert.ok(page.includes("{% assign chromelang = folderlang | default: site.data.languages.defLang | default: 'en' %}"),
@@ -152,7 +152,8 @@ test("page: both language texts selected per copy, the module preset, the four r
     assert.ok(page.includes(`{{ ${key} }}`), `publisher-written key ${key}`);
   }
   for (const route of ['href="https://validator.fhir.org/"', "java -jar validator_cli.jar -version {{ site.data.fhir.version }} -ig {{ pkg }} -tx {{ validator_tx }}",
-    'href="https://validator.fhir.org/swagger-ui/index.html"', "docker run -d --name fhir-validator -p 3500:3500 markiantorno/validator-wrapper"]) {
+    'href="https://validator.fhir.org/swagger-ui/index.html"', "docker run -d --name fhir-validator -p 3500:3500 markiantorno/validator-wrapper",
+    "docker run -d -p 8080:8080 ghcr.io/medizininformatik-initiative/mii-fhir-validator"]) {
     assert.equal(page.split(route).length - 1, 2, `route present in EN and DE: ${route}`);
   }
   assert.equal(page.split('class="ig-highlight ig-highlight-red"').length - 1, 2, "data-protection box EN + DE");
@@ -167,6 +168,65 @@ test("page: both language texts selected per copy, the module preset, the four r
   assert.ok(page.includes("This box sends the pasted text to <code>{{ validator_url }}</code>"));
   assert.ok(page.includes("Diese Box sendet den eingefügten Text an <code>{{ validator_url }}</code>"));
   assert.ok(page.includes('data-page-title="Instanz validieren"') && page.includes('data-page-title="Validate an instance"'));
+});
+
+test("page: the sections are lettered A to F without a gap, in both languages", () => {
+  const letters = [...page.matchAll(/<h3>([A-Z])\. /g)].map((m) => m[1]);
+  assert.deepEqual(letters, ["A", "B", "C", "D", "E", "F", "A", "B", "C", "D", "E", "F"],
+    "A-F in the English branch, then A-F in the German one");
+  // cross-references follow the last lettered route, not the old D
+  assert.equal((page.match(/routes A to E above/g) || []).length, 1);
+  assert.equal((page.match(/Wege A bis E oben/g) || []).length, 1);
+  assert.ok(page.includes("(route D or\nE below)") || page.includes("(route D or E below)"));
+  assert.ok(page.includes("Weg D oder E"));
+});
+
+test("page: the MII validator route says plainly that it cannot serve the live box", () => {
+  assert.equal((page.match(/POST \/validateResource/g) || []).length, 2, "the other API, named in both languages");
+  assert.equal((page.match(/0\.0\.1-alpha/g) || []).length, 2, "its pre-release state is not hidden");
+  for (const url of ["https://medizininformatik-initiative.github.io/mii-fhir-validator/",
+    "https://medizininformatik-initiative.github.io/dataportal/data-node/mii-fhir-validator.html",
+    "https://github.com/medizininformatik-initiative/mii-fhir-validator/releases"]) {
+    assert.equal(page.split(`href="${url}"`).length - 1, 2, `linked in both languages: ${url}`);
+  }
+  assert.ok(page.includes("IG_PARAMS"), "how it learns about this guide's package");
+});
+
+test("page: the result appears above the Validate button, and only one live region announces it", () => {
+  for (const label of ["Validate", "Validieren"]) {
+    const form = page.slice(page.indexOf(`>${label}</button>`) - 900, page.indexOf(`>${label}</button>`) + 40);
+    assert.ok(form.indexOf('class="ig-validate-status"') < form.indexOf('class="ig-validate-result"'),
+      `${label}: status before result`);
+    assert.ok(form.indexOf('class="ig-validate-result"') < form.indexOf(`>${label}</button>`),
+      `${label}: result above the button, so a long table never pushes it away`);
+  }
+  // the status paragraph is the live region; the result div must not be one,
+  // or the summary is announced twice
+  assert.equal((page.match(/class="ig-validate-status" role="status" aria-live="polite"/g) || []).length, 2);
+  assert.ok(!/ig-validate-result" aria-live/.test(page), "results div is not a second live region");
+});
+
+test("issues render with the Bootstrap 3 the base template ships", () => {
+  const js = read("content/assets/js/validate.js");
+  // Bootstrap 3 has no contextual .info for tables - information maps to active
+  assert.match(js, /BOOTSTRAP_ROW_CLASS = \{ fatal: "danger", error: "danger", warning: "warning", information: "active" \}/);
+  const html = v.renderIssuesTable([
+    { severity: "error", line: 1, col: 2, location: "Patient", message: "e", type: "" },
+    { severity: "warning", line: "", col: "", location: "Patient", message: "w", type: "" },
+    { severity: "information", line: "", col: "", location: "Patient", message: "i", type: "" },
+    { severity: "fatal", line: "", col: "", location: "Patient", message: "f", type: "" },
+  ], {});
+  assert.match(html, /<table class="table table-condensed table-hover ig-validate-issues">/);
+  assert.match(html, /<tr class="ig-validate-error danger">/);
+  assert.match(html, /<tr class="ig-validate-warning warning">/);
+  assert.match(html, /<tr class="ig-validate-information active">/);
+  assert.match(html, /<tr class="ig-validate-fatal danger">/);
+  assert.ok(!/ig-validate-information info/.test(html), "no .info - it does not exist in this Bootstrap");
+  // the severity word stays in the first column: the print stylesheet drops
+  // every colour, so the tint is never the only carrier
+  assert.match(html, /<td>error<\/td>/);
+  // the summary line turns .text-danger only when there are errors
+  assert.match(js, /status\.className = "ig-validate-status" \+ \(danger \? " text-danger" : ""\)/);
 });
 
 test("page: no external assets - the only script is the template's own, the only outbound call is the validator's", () => {

@@ -111,13 +111,16 @@ implementer pastes their **own** FHIR instance and checks it against
 
 - the module's package `id#version` and canonical, **auto-filled from the
   build**;
-- four routes — (A) the online validator at validator.fhir.org with the exact
-  entries to make, (B) a copy-pasteable `validator_cli.jar` line, (C) the
-  REST API (Swagger UI link), (D) a self-hosted `markiantorno/validator-wrapper`
-  container for a DIZ;
+- six lettered sections — (A) the online validator at validator.fhir.org with
+  the exact entries to make, (B) a copy-pasteable `validator_cli.jar` line,
+  (C) the REST API (Swagger UI link), (D) a self-hosted
+  `markiantorno/validator-wrapper` container for a DIZ, (E) the MII's own
+  validator container, (F) the live box. Every reference on the page names a
+  letter, so the sequence has to stay gapless — `scripts/validate.test.mjs`
+  asserts A–F in each language branch;
 - a prominent **data-protection box**: the public validator is an HL7-hosted
   best-effort service outside the EU — synthetic instances only; real or
-  realistic patient data only against a self-hosted instance (route D);
+  realistic patient data only against a self-hosted instance (route D or E);
 - a terminology caveat: the public `tx.fhir.org` may lack the German SNOMED CT
   extension — point `-tx` at SU-TermServ/Ontoserver for the module's value
   sets;
@@ -126,6 +129,30 @@ implementer pastes their **own** FHIR instance and checks it against
   package preset and renders the issues (severity, line:col, location,
   message) as a table. A visible note says where the text is sent. The page
   loads nothing external; that POST is its only outbound call.
+
+**Route E is documentation, not a target for the live box.** The MII publishes
+`ghcr.io/medizininformatik-initiative/mii-fhir-validator`, a container that
+carries the KDS packages in its cache and therefore validates offline. It is
+the MII-native answer for a DIZ, so the page names it — but it answers
+`POST /validateResource` with the bare resource and query parameters, not the
+wrapper's `POST /validate` with a `cliContext`, its guides are fixed at
+container start through `IG_PARAMS`, and it is published as `0.0.1-alpha`. A
+module must therefore not put it in `features.json` `validator.url`; the page
+says so, in both languages.
+
+**Rendering uses the Bootstrap the base template already ships** — no
+stylesheet of our own. `bootstrap-fhir.css` declares Bootstrap 3.0.0, which
+has exactly four contextual row classes, so `renderIssuesTable()` maps fatal
+and error to `danger`, warning to `warning` and information to `active`.
+There is no `.info` in that version: mapping information to `info` would look
+right and do nothing. The severity word stays in the first column, because
+the print stylesheet forces every colour to black, and `.text-danger` is the
+only contextual text colour that clears the 4.5:1 bar of
+[styleguide § 8](styleguide.md#8-accessibility-requirements), so it is the
+only one used for the summary line. The status paragraph and the results sit
+**above** the Validate button — a long issues table would otherwise push the
+button off the screen — and only the status paragraph is an `aria-live`
+region, or a screen reader would announce the summary twice.
 
 **The profile picker** is built at build time, not in the browser: the
 publisher writes `temp/pages/_data/structuredefinitions.json` for **this
