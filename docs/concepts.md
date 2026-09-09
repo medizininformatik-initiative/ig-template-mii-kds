@@ -97,3 +97,165 @@ When this document and the wiki disagree, **the wiki wins** — see
 > **Why this matters here:** a module that consumes this template must never confuse
 > the template's SemVer with its own CalVer. The two are announced on different
 > Zulip topics and cut by different automation on purpose.
+
+## 7. The instance-validation page
+
+Every guide rendered with this template gets one page it did not write:
+**`validate.html`** — *Validate an instance* / *Instanz validieren*, at the
+site root and, in a multi-language build, in every language folder
+(`en/validate.html`, `de/validate.html`), linked from the footer's `Links:`
+row (TOC | QA | Validate …). It is the substitute for the ad-hoc validation
+Simplifier used to offer (NUM-DIZ request, decided 2026-08-31): an
+implementer pastes their **own** FHIR instance and checks it against
+**this** module. The page carries, in English and in German:
+
+- the module's package `id#version` and canonical, **auto-filled from the
+  build**;
+- six lettered sections — (A) the online validator at validator.fhir.org with
+  the exact entries to make, (B) a copy-pasteable `validator_cli.jar` line,
+  (C) the REST API (Swagger UI link), (D) a self-hosted
+  `markiantorno/validator-wrapper` container for a DIZ, (E) the MII's own
+  validator container, (F) the live box. Every reference on the page names a
+  letter, so the sequence has to stay gapless — `scripts/validate.test.mjs`
+  asserts A–F in each language branch;
+- a prominent **data-protection box**: the public validator is an HL7-hosted
+  best-effort service outside the EU — synthetic instances only; real or
+  realistic patient data only against a self-hosted instance (route D or E);
+- a terminology caveat: the public `tx.fhir.org` may lack the German SNOMED CT
+  extension — point `-tx` at SU-TermServ/Ontoserver for the module's value
+  sets;
+- a **live box**: textarea + profile picker + optional profile canonical +
+  *Validate*, which `POST`s to `<validator>/validate` with the module's
+  package preset and renders the issues (severity, line:col, location,
+  message) as a table. A visible note says where the text is sent. The page
+  loads nothing external; that POST is its only outbound call.
+
+**Route E is documentation, not a target for the live box.** The MII publishes
+`ghcr.io/medizininformatik-initiative/mii-fhir-validator`, a container that
+carries the KDS packages in its cache and therefore validates offline. It is
+the MII-native answer for a DIZ, so the page names it — but it answers
+`POST /validateResource` with the bare resource and query parameters, not the
+wrapper's `POST /validate` with a `cliContext`, its guides are fixed at
+container start through `IG_PARAMS`, and it is published as `0.0.1-alpha`. A
+module must therefore not put it in `features.json` `validator.url`; the page
+says so, in both languages.
+
+**Rendering uses the Bootstrap the base template already ships** — no
+stylesheet of our own. `bootstrap-fhir.css` declares Bootstrap 3.0.0, which
+has exactly four contextual row classes, so `renderIssuesTable()` maps fatal
+and error to `danger`, warning to `warning` and information to `active`.
+There is no `.info` in that version: mapping information to `info` would look
+right and do nothing. The severity word stays in the first column, because
+the print stylesheet forces every colour to black, and `.text-danger` is the
+only contextual text colour that clears the 4.5:1 bar of
+[styleguide § 8](styleguide.md#8-accessibility-requirements), so it is the
+only one used for the summary line. The status paragraph and the results sit
+**above** the Validate button — a long issues table would otherwise push the
+button off the screen — and only the status paragraph is an `aria-live`
+region, or a screen reader would announce the summary twice.
+
+**The profile picker** is built at build time, not in the browser: the
+publisher writes `temp/pages/_data/structuredefinitions.json` for **this
+guide's own** StructureDefinitions, and the page renders a `<select>` from it
+with Liquid (`where_exp` on `kind == 'resource' and derivation ==
+'constraint' and abstract != true`, sorted by title, label from
+`titlelang.<lang>`). Choosing an entry copies its canonical into the text
+box, which stays the single source of the request — so a canonical from a
+**dependency** package (those are in no `_data` file) can still be pasted by
+hand. A module whose guide has no resource profile — one with only a logical
+model — renders no picker at all, only the text box. Three details are load-
+bearing and were each measured with publisher 2.3.2:
+
+- the filter is `kind == 'resource'`, not "everything except logical models":
+  an extension or a datatype profile is `kind == 'complex-type'`, and handing
+  one to the validator answers *"Specified profile type was Extension, but
+  found type Patient"*;
+- `<select>` and not `<datalist>`, and a plain `<p>` the script removes and
+  not `<noscript>`: the publisher's HTML inspector reports any element it does
+  not know as a QA warning (`Illegal HTML: Illegal HTML element: …`), and it
+  knows neither `datalist` nor `noscript`;
+- `site.data.structuredefinitions` must be converted with `where_exp` before
+  it is sorted — a `sort` straight on the id→object map aborts the Jekyll run,
+  and so does a `sort` on a missing file, hence the `{% assign %}` guard.
+
+**Two validator failures carry no validation issue** and would otherwise
+surface as a bare `HTTP 500` (both probed live on 2026-09-09): a package no
+registry serves answers with the body *"Unable to resolve package id …"* — an
+unpublished preview build is the usual cause — and a profile canonical the
+loaded packages do not define answers with an **empty** body. `failureHint()`
+maps the two to their own messages (`data-msg-nopackage` / `data-msg-noprofile`).
+
+> **Why it lives here and not in each module:** the template reaches every
+> URL-referencing module on its next build (§ 1), so one page here is one
+> page everywhere, kept identical. The module side is deliberately tiny — an
+> optional menu entry and an optional override file — and is documented in
+> `mii-kds-module-template`.
+
+**How the page gets rendered.** The IG Publisher copies a template's
+`content/` folder into the Jekyll source tree before Jekyll runs — once at
+the site root and once into every language folder (that is why `assets/`
+exists per language folder too). A file there **with front matter** is
+rendered like any page, so `content/validate.html` becomes
+`output/validate.html` plus `output/<lang>/validate.html` per language
+(verified with the pinned publisher 2.3.2 on 2026-09-08 by building this
+repository's preview: three copies, QA errors 0). Each copy reads its own
+folder from Jekyll's `page.dir` (`/`, `/en/`, `/de/`): a language-folder copy
+renders chrome and body in that language (German for `de/`, English for any
+other folder — the source carries both texts), the root copy renders the
+IG's default language, which in a single-language build is the only copy
+there is. The footer link is folder-relative like the TOC link, so a reader
+lands on the copy in the language they are reading. Two template fragments
+are root-aware for the root copy: the footer prefixes `qa.html` with `../`
+only from a language folder (a `../` from the site root escapes the output
+folder and the publisher's HTML check aborts the build), and the language
+switcher renders nothing on a root page (the base's `../<lang>/` links would
+escape the site there).
+
+**Where the values come from.** The publisher writes its own data file,
+`temp/pages/_data/fhir.json`; the page reads `site.data.fhir.packageId`,
+`site.data.fhir.igVer`, `site.data.fhir.canonical` and `site.data.fhir.version`
+(the FHIR version). The base template's pre-process copies a module's
+`input/data/` into `_data`, so the same optional file that carries the
+feedback dashboards (`site.data.features.feedback`) carries the validator
+settings:
+
+```json
+// input/data/features.json — OPTIONAL; every key has a default
+{
+  "validator": {
+    "url": "https://validator.fhir.org",
+    "tx": "https://tx.fhir.org"
+  }
+}
+```
+
+`validator.url` is the base URL the live box posts to and the URL the page
+names in its note (default: the public HL7 service). `validator.tx` is the
+terminology server the page prints in route B/D and, when set, passes as
+`txServer` in the live box's request (default: the public `tx.fhir.org`; a
+DIZ points it at its Ontoserver). A missing file or an unset key falls back —
+**no module change is required**.
+
+**The data-protection rule is not negotiable.** The default target is a
+service outside the EU. The page says so in both languages and in red; a
+module that wants its readers to validate anything beyond synthetic examples
+sets `validator.url` to a self-hosted instance (route D) and says so in its
+own guidance. `input/data/features.json` is the only knob; there is no way to
+"switch the warning off", by design.
+
+**Verified API facts** (2026-09-08, `validator.fhir.org` wrapper 1.0.84 /
+core 6.10.3) are recorded in the header of `content/assets/js/validate.js`:
+the Swagger UI reads `https://validator.fhir.org/openapi.yml`; `POST /validate`
+takes `{ cliContext: { sv, igs, profiles, txServer, locale }, filesToValidate:
+[{ fileName, fileContent, fileType }] }` (the `sessionId` the spec marks
+required is optional in practice), answers `{ outcomes: [{ fileInfo, issues }],
+sessionId }`, and the issue's severity key is `level`, not `severity`; CORS
+reflects the caller's origin and allows `Content-Type`, so the browser POST
+works from any host.
+
+**REMOVAL is one commit:** `content/validate.html`, `content/assets/js/validate.js`,
+the `lbl_validate` link in `includes/fragment-footer.html`, and
+`scripts/validate.test.mjs` (plus its two CI list entries); the root-aware
+QA prefix in the footer and the root guard in the language fragment can stay —
+they are inert for pages in the language folders.
+

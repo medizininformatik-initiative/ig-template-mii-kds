@@ -13,7 +13,11 @@ template [`fhir2.base.template`](https://github.com/HL7/ig-template-base2).
 **You don't edit this repository to write an IG — you reference it.** A module
 names it in `ig.ini` and the IG Publisher applies it at build time. Keeping the
 branding in one versioned package means the modules that adopt it look the same,
-and a fix here reaches them with one release. The package is not on a registry
+and a fix here reaches them with one release. Beyond the branding, the template
+contributes one page to every guide: **Validate an instance** (`validate.html`,
+linked in the footer) — the Simplifier-substitute for checking an implementer's
+own FHIR instance against the module, with the module's package preset
+([concepts § 7](docs/concepts.md#7-the-instance-validation-page)). The package is not on a registry
 yet, so today a module references this repository **by URL** (the IG Publisher
 fetches the released `main` branch at build time), with a vendored copy of the
 `dev` branch as the offline fallback — see
@@ -64,7 +68,7 @@ The paths mirror the base template, because the IG Publisher resolves them by na
 | --- | --- |
 | `package/` | The template package manifest — what the IG Publisher applies |
 | `includes/` | Header, footer and CSS fragments that override the base template |
-| `content/` | Branding assets: CSS, logo, favicon |
+| `content/` | Branding assets: CSS, logo, favicon — plus the one page the template contributes to every guide, `validate.html` (validate your own instance against the module; [concepts § 7](docs/concepts.md#7-the-instance-validation-page)) |
 | `translations/` | German UI-string catalogs for the base template |
 | `input/`, `ig.ini` | The bundled preview IG (so branding changes are reviewable) |
 | `docs/` | Guides and step-by-step recipes |

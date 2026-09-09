@@ -12,3 +12,16 @@ Id: preview-model
 Title: "Preview Model"
 Description: "Minimal logical model that exists only so the template preview IG builds and its artifact layout renders; not an MII artifact."
 * placeholder 0..1 string "A single placeholder element."
+
+// A SECOND preview resource, and the only profile: it exists so the
+// instance-validation page's profile picker has an entry to render — the
+// picker lists this guide's own resource profiles (concepts § 7), so without
+// a profile the preview would only ever show the empty case. Like the logical
+// model above it binds no terminology, carries no clinical content and is
+// never published.
+Profile: PreviewPatient
+Parent: Patient
+Id: preview-patient
+Title: "Preview Patient"
+Description: "Minimal profile that exists only so the template preview renders a profile page and the instance-validation page's picker has an entry; not an MII artifact."
+* name 1..*
