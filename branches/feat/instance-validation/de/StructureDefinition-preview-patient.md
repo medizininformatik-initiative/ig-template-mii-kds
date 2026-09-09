@@ -85,7 +85,7 @@ Weitere Repräsentationen des Profils: [CSV](../StructureDefinition-preview-pati
   "name" : "PreviewPatient",
   "title" : "Preview Patient",
   "status" : "draft",
-  "date" : "2026-09-09T13:10:05+00:00",
+  "date" : "2026-09-09T13:13:13+00:00",
   "publisher" : "NUM-DIZ",
   "_publisher" : {
     "extension" : [{
