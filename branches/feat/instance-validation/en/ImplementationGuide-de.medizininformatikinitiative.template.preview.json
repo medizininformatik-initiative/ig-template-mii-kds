@@ -11,7 +11,7 @@
   "name" : "MIIKDSTemplatePreview",
   "title" : "MII KDS IG Template — Preview",
   "status" : "draft",
-  "date" : "2026-09-08T15:19:55+00:00",
+  "date" : "2026-09-09T13:10:05+00:00",
   "publisher" : "NUM-DIZ",
   "contact" : [{
     "name" : "NUM-DIZ",
@@ -682,6 +682,18 @@
       },
       "name" : "Preview Model",
       "description" : "Minimal logical model that exists only so the template preview IG builds and its artifact layout renders; not an MII artifact.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/preview-patient"
+      },
+      "name" : "Preview Patient",
+      "description" : "Minimal profile that exists only so the template preview renders a profile page and the instance-validation page's picker has an entry; not an MII artifact.",
       "exampleBoolean" : false
     }],
     "page" : {

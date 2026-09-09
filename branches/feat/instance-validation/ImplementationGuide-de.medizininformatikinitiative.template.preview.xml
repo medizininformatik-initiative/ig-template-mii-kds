@@ -22,7 +22,7 @@
     </extension>
   </title>
   <status value="draft"/>
-  <date value="2026-09-08T15:19:55+00:00"/>
+  <date value="2026-09-09T13:10:05+00:00"/>
   <publisher value="NUM-DIZ">
     <extension url="http://hl7.org/fhir/StructureDefinition/translation">
       <extension url="lang">
@@ -528,6 +528,17 @@
       </reference>
       <name value="Preview Model"/>
       <description value="Minimal logical model that exists only so the template preview IG builds and its artifact layout renders; not an MII artifact."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/preview-patient"/>
+      </reference>
+      <name value="Preview Patient"/>
+      <description value="Minimal profile that exists only so the template preview renders a profile page and the instance-validation page's picker has an entry; not an MII artifact."/>
       <exampleBoolean value="false"/>
     </resource>
     <page>

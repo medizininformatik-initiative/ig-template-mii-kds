@@ -11,4 +11,11 @@
   "url" : "https://github.com/medizininformatik-initiative/ig-template-mii-kds/StructureDefinition/preview-model",
   "version" : "1.3.4",
   "name" : "PreviewModel"
+},
+{
+  "id" : "preview-patient",
+  "type" : "StructureDefinition",
+  "url" : "https://github.com/medizininformatik-initiative/ig-template-mii-kds/StructureDefinition/preview-patient",
+  "version" : "1.3.4",
+  "name" : "PreviewPatient"
 }]

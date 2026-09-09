@@ -13,6 +13,10 @@
 
 * [Preview Model](en/StructureDefinition-preview-model.md)
 
+### Resource Profiles
+
+* [Preview Patient](en/StructureDefinition-preview-patient.md)
+
 ### ImplementationGuides
 
 * [MII KDS IG Template — Preview](en/ImplementationGuide-de.medizininformatikinitiative.template.preview.md)

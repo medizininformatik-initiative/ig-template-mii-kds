@@ -15,3 +15,11 @@ These define data models that represent the domain covered by this implementatio
 | :--- | :--- |
 | [ Preview Model  ](StructureDefinition-preview-model.md) | Minimal logical model that exists only so the template preview IG builds and its artifact layout renders; not an MII artifact. |
 
+### Structures: Resource Profiles 
+
+These define constraints on FHIR resources for systems conforming to this implementation guide.
+
+| | |
+| :--- | :--- |
+| [ Preview Patient  ](StructureDefinition-preview-patient.md) | Minimal profile that exists only so the template preview renders a profile page and the instance-validation page's picker has an entry; not an MII artifact. |
+
