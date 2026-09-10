@@ -2,8 +2,8 @@
 name: ig-translate
 description: >-
   Multi-language support for MII KDS Implementation Guides — the part the
-  TEMPLATE owns. This project's model is English as the default IG language
-  and German as the additional rendering. Points at the catalog skill
+  TEMPLATE owns. This project's model is German as the default IG language
+  and English as the additional rendering. Points at the catalog skill
   fhir-ig-translation for the maintained rendering matrix (which artifacts
   actually render translations) and documents the i18n configuration this
   template is built and tested against and which the module scaffold
@@ -47,23 +47,25 @@ If the task is "translate this module's content", switch to
 
 ## Language policy
 
-**This project's model: English is the default IG language, German the
-additional rendering** — following `kerndatensatz-basis`.
+**This project's model: German is the default IG language, English the
+additional rendering** — the model the KDS Dokument module uses.
 
-- `i18n-default-lang: en` — the guide leads in English.
-- `i18n-lang: [de]` — German is the additional rendering.
+- `i18n-default-lang: de` — the guide leads in German.
+- `i18n-lang: [en]` — English is the additional rendering.
 - Conformance-resource `description`/`name`/`title` stay **German** in the FSH
   (the MII naming conventions prefer German there), surfaced in the English
-  guide via a Translation extension.
+  rendering via a Translation extension.
 
-> **Why en-default (this project's reading):** the MII meta wiki's naming
+> **Why de-default:** an MII KDS module's guide and its published package are
+> German-first, and this preview mirrors what a module does, so an author
+> copying from here starts in the right place. The MII meta wiki's naming
 > conventions prefer German for a conformance resource's
-> description/name/title but require a translation extension whose content is
-> shown "im englischsprachigen Implementierungsleitfaden" — that phrasing
-> assumes an English guide, and `kerndatensatz-basis` is built that way. The
-> wiki does not state the rule directly, so no MII rule stops a module from
-> choosing otherwise, and the template's overrides are language-neutral either
-> way. The model is nevertheless binding wherever the guard runs: here, on
+> description/name/title and require a translation extension whose content is
+> shown "im englischsprachigen Implementierungsleitfaden" — the English
+> rendering `i18n-lang: [en]` produces. The wiki states no rule about which
+> language the narrative leads in, and modules differ: `kerndatensatz-basis`
+> leads in English. No MII rule stops a module from choosing either way, and
+> the template's overrides are language-neutral regardless. The model is nevertheless binding wherever the guard runs: here, on
 > every pull request into `dev` (`.github/workflows/security-scan.yml`), and in
 > a repository created from the module scaffold, which inherits the scaffold's
 > own copy (`scripts/language-model-check.sh`, run by `convention-check.yml`
@@ -92,7 +94,7 @@ toolchain behavior:
   this repo bumps either pin, re-verify the catalog table against this repo's
   preview and report any drift **to the catalog skill** — do not re-grow a
   local copy of the table.
-- **This repo's language policy** (English default, German additional — see
+- **This repo's language policy** (German default, English additional — see
   above) decides which language a page falls back to when a translation file
   is missing.
 - **The vendored German UI strings and the language-neutral
@@ -106,11 +108,11 @@ The template supports — and the module scaffold pre-configures — this
 
 ```yaml
 parameters:
-  i18n-default-lang: en          # leading language
+  i18n-default-lang: de          # leading language
   i18n-lang:
-    - de                         # additional rendered language(s)
+    - en                         # additional rendered language(s)
   translation-sources:
-    - input/translations/de      # folder holding the translations
+    - input/translations/en      # folder holding the translations
 ```
 
 ## What THIS repo must uphold (template obligations)
@@ -137,7 +139,7 @@ parameters:
    itself.
 3. **Do not "translate" FHIR identifiers.** `name`, `id`, codes, and
    canonical URLs stay as they are, in every language.
-4. **Additive only.** Translations are supplements; the English source page is
+4. **Additive only.** Translations are supplements; the German source page is
    never modified by translation work.
 
 ## When to activate (in this repo)

@@ -74,7 +74,7 @@ before doing the corresponding task by hand.
   — **the single convention checker**: repo ↔ MII meta wiki drift plus the
   metadata conventions these templates adopt; report-only, PRs target `dev`.
 - [`skills/ig-translate/`](skills/ig-translate/SKILL.md) — multi-language
-  support in template-owner scope: en-default with a German translation, i18n
+  support in template-owner scope: de-default with an English translation, i18n
   conventions, language-neutrality rules for the template's overrides, and the
   verification obligations for this repo's toolchain pins. The rendering table
   and the guide-facing translate/harvest workflow are **not** here — both live

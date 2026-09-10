@@ -1,45 +1,46 @@
-This page exists solely for the **preview** of the
-`de.medizininformatikinitiative.template` IG template. It is **not** an MII Core
-Dataset module.
+Diese Seite dient ausschließlich dem **Vorschau** der IG-Template-Vorlage
+`de.medizininformatikinitiative.template`. Sie ist **kein** MII-Kerndatensatz-Modul.
 
-The preview builds the template standalone so that branding changes (header,
-footer, CSS, logo) can be reviewed in a rendered IG before a template version is
-released. The build renders in English (the default language) and German, to
-check the language-aware header and footer.
+Die Vorschau baut die Vorlage eigenständig, damit Branding-Änderungen
+(Kopfzeile, Fußzeile, CSS, Logo) in einer gerenderten IG geprüft werden können,
+bevor eine Template-Version veröffentlicht wird. Der Build rendert auf Deutsch
+(Standardsprache) und Englisch, um die sprachabhängige Kopf- und Fußzeile zu
+prüfen.
 
-What the template is and how a module uses it is described in the repository's
-`README.md`.
+Was die Vorlage ist und wie ein Modul sie verwendet, steht in der `README.md`
+des Repositorys.
 
-### Highlight boxes (background-colour demo)
+### Highlight-Boxen (Demo der Hintergrundfarben)
 
-The template ships reusable, purpose-neutral CSS classes for calling out content
-(classes `ig-highlight` with `-blue`, `-green`, `-orange`, `-red`, `-grey`).
-These are styling only — a module decides what each colour means; the
-conventional reading is orange = warning, red = important, grey = hint.
+Die Vorlage stellt wiederverwendbare, zweckneutrale CSS-Klassen zum Hervorheben
+von Inhalten bereit (Klassen `ig-highlight` mit `-blue`, `-green`, `-orange`,
+`-red`, `-grey`). Es handelt sich um reines Styling — welche Bedeutung eine
+Farbe hat, entscheidet das jeweilige Modul; die übliche Lesart ist
+Orange = Warnung, Rot = Wichtig, Grau = Hinweis.
 
 <!-- Raw HTML block: the page processor does NOT run markdown inside it, so the
      class names have to be marked up as <code>, not with backticks. -->
 <div class="ig-highlight ig-highlight-blue">
-<h5>Blue highlight box</h5>
-<p>Example of the blue background highlight (<code>ig-highlight-blue</code>).</p>
+<h5>Blaue Highlight-Box</h5>
+<p>Beispiel für die blaue Hintergrund-Hervorhebung (<code>ig-highlight-blue</code>).</p>
 </div>
 
 <div class="ig-highlight ig-highlight-green">
-<h5>Green highlight box</h5>
-<p>Example of the green background highlight (<code>ig-highlight-green</code>).</p>
+<h5>Grüne Highlight-Box</h5>
+<p>Beispiel für die grüne Hintergrund-Hervorhebung (<code>ig-highlight-green</code>).</p>
 </div>
 
 <div class="ig-highlight ig-highlight-orange">
-<h5>Orange highlight box (warning)</h5>
-<p>Example of the orange background highlight (<code>ig-highlight-orange</code>) — conventionally a warning.</p>
+<h5>Orange Highlight-Box (Warnung)</h5>
+<p>Beispiel für die orange Hintergrund-Hervorhebung (<code>ig-highlight-orange</code>) — üblicherweise eine Warnung.</p>
 </div>
 
 <div class="ig-highlight ig-highlight-red">
-<h5>Red highlight box (important)</h5>
-<p>Example of the red background highlight (<code>ig-highlight-red</code>) — conventionally an important notice.</p>
+<h5>Rote Highlight-Box (Wichtig)</h5>
+<p>Beispiel für die rote Hintergrund-Hervorhebung (<code>ig-highlight-red</code>) — üblicherweise ein wichtiger Hinweis.</p>
 </div>
 
 <div class="ig-highlight ig-highlight-grey">
-<h5>Grey highlight box (hint)</h5>
-<p>Example of the grey background highlight (<code>ig-highlight-grey</code>) — conventionally a hint or authoring note.</p>
+<h5>Graue Highlight-Box (Hinweis)</h5>
+<p>Beispiel für die graue Hintergrund-Hervorhebung (<code>ig-highlight-grey</code>) — üblicherweise ein Hinweis oder eine Autorennotiz.</p>
 </div>

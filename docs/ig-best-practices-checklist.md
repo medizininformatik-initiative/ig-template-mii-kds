@@ -44,7 +44,7 @@ applicable to a template.
 
 | Check | State | Evidence |
 |---|---|---|
-| Multi-language is set up the supported way | ✅ | `i18n-default-lang: en`, `i18n-lang: [de]` — the same model as `kerndatensatz-basis` ([`docs/recipes/add-translation.md`](recipes/add-translation.md)) |
+| Multi-language is set up the supported way | ✅ | `i18n-default-lang: de`, `i18n-lang: [en]` — an MII KDS module's guide and package lead in German, and the preview mirrors what a module does ([`docs/recipes/add-translation.md`](recipes/add-translation.md)) |
 | Uses the language-aware base and the supported translation mechanism | ✅ | `fhir2.base.template` is the *translated* base; translations follow the HL7 reference layout |
 | Header/footer overrides are language-aware, not hard-coded to one language | ✅ | [`docs/styleguide.md`](styleguide.md) §4 (logo variants) and §6 (footer labels and link targets) |
 | The base UI strings resolve in every offered language | ✅ | German catalogs vendored, because the pinned base ships none — [`translations/README.md`](../translations/README.md) |
