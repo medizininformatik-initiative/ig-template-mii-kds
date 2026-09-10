@@ -1,58 +1,53 @@
 {
-  "date" : "Sat, 05 Sep, 2026 07:30:14 +0000",
+  "date" : "Thu, 10 Sep, 2026 18:47:38 +0000",
   "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
   "files" : [{
     "name" : "/fsh-generated/resources/ImplementationGuide-de.medizininformatikinitiative.template.preview.json",
     "size" : 2354,
     "processes" : [{
       "activity" : "load",
-      "start" : 26,
-      "length" : 14
+      "start" : 39,
+      "length" : 16
     },
     {
       "activity" : "checkR4R4B",
-      "start" : 26,
-      "length" : 12
+      "start" : 39,
+      "length" : 16
     },
     {
       "activity" : "generateNarratives",
-      "start" : 26,
-      "length" : 196
+      "start" : 39,
+      "length" : 222
     },
     {
       "activity" : "validate",
-      "start" : 28,
-      "length" : 1665
-    },
-    {
-      "activity" : "scanForUsageStats",
-      "start" : 30,
-      "length" : 1
+      "start" : 42,
+      "length" : 3737
     },
     {
       "activity" : "translate",
-      "start" : 30,
-      "length" : 8
+      "start" : 46,
+      "length" : 10
     },
     {
       "activity" : "generate1",
-      "start" : 30,
-      "length" : 107
+      "start" : 46,
+      "length" : 139
     },
     {
       "activity" : "generate2",
-      "start" : 32,
-      "length" : 142
+      "start" : 50,
+      "length" : 157
     },
     {
       "activity" : "generateValidationPack",
-      "start" : 40,
+      "start" : 60,
       "length" : 3
     },
     {
       "activity" : "scanExamplesForR5",
-      "start" : 50,
-      "length" : 1
+      "start" : 71,
+      "length" : 2
     }]
   },
   {
@@ -60,67 +55,67 @@
     "size" : 1332,
     "processes" : [{
       "activity" : "loadResources",
-      "start" : 26,
-      "length" : 3
+      "start" : 39,
+      "length" : 4
     },
     {
       "activity" : "load",
-      "start" : 26,
-      "length" : 5
+      "start" : 39,
+      "length" : 6
     },
     {
       "activity" : "generateSnapshots",
-      "start" : 26,
-      "length" : 5
+      "start" : 39,
+      "length" : 6
     },
     {
       "activity" : "load-configure",
-      "start" : 26,
+      "start" : 39,
       "length" : 1
     },
     {
       "activity" : "generateNarratives",
-      "start" : 26,
-      "length" : 1210
+      "start" : 39,
+      "length" : 975
     },
     {
       "activity" : "validate",
-      "start" : 28,
-      "length" : 706
+      "start" : 40,
+      "length" : 1869
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 46,
+      "length" : 1
     },
     {
       "activity" : "translate",
-      "start" : 30,
+      "start" : 46,
       "length" : 1
     },
     {
       "activity" : "generate1",
-      "start" : 30,
-      "length" : 48
+      "start" : 46,
+      "length" : 53
     },
     {
       "activity" : "generate2",
-      "start" : 32,
-      "length" : 562
+      "start" : 50,
+      "length" : 749
     },
     {
       "activity" : "generate2",
-      "start" : 32,
-      "length" : 1625
-    },
-    {
-      "activity" : "makeDependencies",
-      "start" : 35,
-      "length" : 1
+      "start" : 50,
+      "length" : 911
     },
     {
       "activity" : "generateValidationPack",
-      "start" : 40,
-      "length" : 1
+      "start" : 60,
+      "length" : 2
     },
     {
       "activity" : "scanProfilesForR5",
-      "start" : 50,
+      "start" : 71,
       "length" : 1
     }]
   },
@@ -129,7 +124,7 @@
     "size" : 602,
     "processes" : [{
       "activity" : "generate2",
-      "start" : 32,
+      "start" : 50,
       "length" : 2
     }]
   },
@@ -146,29 +141,39 @@
     "size" : 3041,
     "processes" : [{
       "activity" : "generate2",
-      "start" : 32,
+      "start" : 50,
       "length" : 1
     }]
   },
   {
     "name" : "/input/pagecontent/index.md",
-    "size" : 1987
-  },
-  {
-    "name" : "/template/config",
-    "size" : 0
-  },
-  {
-    "name" : "/template/config/_config.yml",
-    "size" : 140,
+    "size" : 1987,
     "processes" : [{
       "activity" : "generate2",
-      "start" : 32,
+      "start" : 50,
       "length" : 1
     }]
   },
   {
+    "name" : "/template/config",
+    "size" : 0,
+    "processes" : [{
+      "activity" : "validate",
+      "start" : 46,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/template/config/_config.yml",
+    "size" : 140
+  },
+  {
     "name" : "/temp/pages/_includes/artifacts.xml",
-    "size" : 1675
+    "size" : 1675,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 50,
+      "length" : 1
+    }]
   }]
 }

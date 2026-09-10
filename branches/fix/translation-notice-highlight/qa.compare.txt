@@ -1,12 +1,12 @@
 MIIKDSTemplatePreview : Validation Results
 =========================================
 
-err = 0, warn = 8, info = 2
+err = 0, warn = 10, info = 4
 $--
 Generated $--. FHIR version $-- for de.medizininformatikinitiative.template.preview#$-- (canonical = https://github.com/medizininformatik-initiative/ig-template-mii-kds)
  Build Errors : 10 / 4 / 0
- /home/runner/work/ig-template-mii-kds/ig-template-mii-kds/fsh-generated/resources/ImplementationGuide-de.medizininformatikinitiative.template.preview : 0 / 0 / 2
- /home/runner/work/ig-template-mii-kds/ig-template-mii-kds/fsh-generated/resources/StructureDefinition-preview-model : 0 / 4 / 2
+ /home/runner/work/ig-template-mii-kds/ig-template-mii-kds/fsh-generated/resources/ImplementationGuide-de.medizininformatikinitiative.template.preview : 0 / 1 / 4
+ /home/runner/work/ig-template-mii-kds/ig-template-mii-kds/fsh-generated/resources/StructureDefinition-preview-model : 0 / 5 / 2
 </table>
 == n/a ==
 ERROR: de/translationinfo.html#/html/body/div/div/div/div/div/table/tbody/tr/td/a at Line 280, column 12: The link 'https://github.com/medizininformatik-initiative/ig-template-mii-kds/tree/main/input/translations/de/pagecontent' for "input/translations/de/pagecontent/" cannot be resolved
@@ -24,8 +24,12 @@ WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-v
 WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml, dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 4: An HTML fragment from the set [globals-table.xhtml, globals-table.xhtml] is not included anywhere in the produced implementation guide
 == fsh-generated/resources/ImplementationGuide-de.medizininformatikinitiative.template.preview.json ==
+INFORMATION: ImplementationGuide/de.medizininformatikinitiative.template.preview: ImplementationGuide.language: Reference to draft ValueSet http://hl7.org/fhir/ValueSet/languages|4.0.1
+INFORMATION: ImplementationGuide/de.medizininformatikinitiative.template.preview: ImplementationGuide.language: Reference to trial-use ValueSet http://hl7.org/fhir/ValueSet/languages|4.0.1
+WARNING: ImplementationGuide/de.medizininformatikinitiative.template.preview: ImplementationGuide.jurisdiction[0].coding[0].system: A definition for CodeSystem 'urn:iso:std:iso:3166:-2' could not be found, so the code cannot be validated
 INFORMATION: Resource: The resource ImplementationGuide/de.medizininformatikinitiative.template.preview could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/StructureDefinition-preview-model.json ==
+WARNING: StructureDefinition/preview-model: StructureDefinition.jurisdiction[0].coding[0].system: A definition for CodeSystem 'urn:iso:std:iso:3166:-2' could not be found, so the code cannot be validated
 WARNING: StructureDefinition/preview-model: StructureDefinition.snapshot.element[0]: Constraint failed: eld-20: 'Element names should be simple alphanumerics with a max of 64 characters, or code generation tools may be broken (path.matches('[A-Za-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*(\\[x])?)*'))'
 WARNING: StructureDefinition/preview-model: StructureDefinition.snapshot.element[1]: Constraint failed: eld-20: 'Element names should be simple alphanumerics with a max of 64 characters, or code generation tools may be broken (path.matches('[A-Za-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*(\\[x])?)*'))'
 WARNING: StructureDefinition/preview-model: StructureDefinition.differential.element[0]: Constraint failed: eld-20: 'Element names should be simple alphanumerics with a max of 64 characters, or code generation tools may be broken (path.matches('[A-Za-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*(\\[x])?)*'))'
