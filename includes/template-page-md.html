@@ -7,6 +7,12 @@
      translated page that ignores ig-highlight (styleguide §3).
   2. The base only captures it in the no-TOC branch, so it appears on pages
      without a table of contents and silently disappears on pages with one.
+  3. The base falls into the NO_TRANS branch whenever `translated[lang]` is
+     falsy, which includes the case where the publisher wrote no `translated`
+     map at all (issue #28). The guard renders the notice only where the
+     publisher actually tracked translation. On markdown pages the map is
+     always present, so this is a no-op here — it is kept identical to
+     includes/template-page.html, where it is the actual fix.
   This copy is verbatim from fhir2.base.template 0.1.0 except: the notice is a
   `div.ig-highlight.ig-highlight-grey` (markdown="1" keeps the catalog text a
   paragraph) and it is emitted in BOTH captures, so every translated page
@@ -34,7 +40,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 {:toc}
 * This will not be displayed
 </div>
-{% if site.data.languages.defLang != include.lang %}
+{% if site.data.languages.defLang != include.lang and site.data.pages[localPage].translated %}
 <div class="ig-highlight ig-highlight-grey" markdown="1">
 {% if site.data.pages[localPage].translated[include.lang] %}
 {{site.data.stringsBase[include.lang]['TRANS_HLP']}}
@@ -55,7 +61,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div>
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-{% if site.data.languages.defLang != include.lang %}
+{% if site.data.languages.defLang != include.lang and site.data.pages[localPage].translated %}
 <div class="ig-highlight ig-highlight-grey" markdown="1">
 {% if site.data.pages[localPage].translated[include.lang] %}
 {{site.data.stringsBase[include.lang]['TRANS_HLP']}}
