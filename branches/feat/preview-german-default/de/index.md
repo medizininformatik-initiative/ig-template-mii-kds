@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Offizielle URL*:https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview | *Version*:1.3.4 |
-| Draft Stand: 2026-09-10 | *Maschinenlesbarer Name*:MIIKDSTemplatePreview |
+| Draft Stand: 2026-09-11 | *Maschinenlesbarer Name*:MIIKDSTemplatePreview |
 
 Diese Seite dient ausschließlich dem **Vorschau** der IG-Template-Vorlage `de.medizininformatikinitiative.template`. Sie ist **kein** MII-Kerndatensatz-Modul.
 

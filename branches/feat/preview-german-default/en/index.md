@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview | *Version*:1.3.4 |
-| Draft as of 2026-09-10 | *Computable Name*:MIIKDSTemplatePreview |
+| Draft as of 2026-09-11 | *Computable Name*:MIIKDSTemplatePreview |
 
 This page includes translations from the original source language in which the guide was authored. Information on these translations and instructions on how to provide feedback on the translations can be found [here](translationinfo.md).
 

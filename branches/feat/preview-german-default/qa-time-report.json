@@ -1,58 +1,53 @@
 {
-  "date" : "Thu, 10 Sep, 2026 19:17:20 +0000",
+  "date" : "Fri, 11 Sep, 2026 08:19:49 +0000",
   "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
   "files" : [{
     "name" : "/fsh-generated/resources/ImplementationGuide-de.medizininformatikinitiative.template.preview.json",
     "size" : 2362,
     "processes" : [{
       "activity" : "load",
-      "start" : 29,
-      "length" : 17
+      "start" : 26,
+      "length" : 16
     },
     {
       "activity" : "checkR4R4B",
-      "start" : 29,
-      "length" : 19
+      "start" : 26,
+      "length" : 13
     },
     {
       "activity" : "generateNarratives",
-      "start" : 29,
-      "length" : 109
+      "start" : 26,
+      "length" : 207
     },
     {
       "activity" : "validate",
-      "start" : 31,
-      "length" : 2500
+      "start" : 29,
+      "length" : 3650
     },
     {
       "activity" : "translate",
-      "start" : 34,
-      "length" : 10
+      "start" : 33,
+      "length" : 11
     },
     {
       "activity" : "generate1",
-      "start" : 34,
-      "length" : 138
+      "start" : 33,
+      "length" : 126
     },
     {
       "activity" : "generate2",
       "start" : 36,
-      "length" : 141
-    },
-    {
-      "activity" : "generate2",
-      "start" : 37,
-      "length" : 1
+      "length" : 134
     },
     {
       "activity" : "generateValidationPack",
-      "start" : 46,
-      "length" : 3
+      "start" : 45,
+      "length" : 2
     },
     {
       "activity" : "scanExamplesForR5",
-      "start" : 58,
-      "length" : 3
+      "start" : 57,
+      "length" : 2
     }]
   },
   {
@@ -60,77 +55,77 @@
     "size" : 1332,
     "processes" : [{
       "activity" : "loadResources",
-      "start" : 29,
-      "length" : 3
+      "start" : 26,
+      "length" : 4
     },
     {
       "activity" : "load",
-      "start" : 29,
-      "length" : 8
+      "start" : 26,
+      "length" : 10
     },
     {
       "activity" : "generateSnapshots",
-      "start" : 29,
+      "start" : 26,
       "length" : 5
     },
     {
       "activity" : "load-configure",
-      "start" : 29,
+      "start" : 26,
       "length" : 1
     },
     {
       "activity" : "generateNarratives",
-      "start" : 29,
-      "length" : 694
+      "start" : 27,
+      "length" : 511
     },
     {
       "activity" : "validate",
-      "start" : 30,
-      "length" : 1491
+      "start" : 27,
+      "length" : 2044
     },
     {
       "activity" : "checkConformanceResources",
-      "start" : 34,
-      "length" : 2
+      "start" : 33,
+      "length" : 1
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 33,
+      "length" : 1
     },
     {
       "activity" : "translate",
-      "start" : 34,
+      "start" : 33,
       "length" : 1
     },
     {
       "activity" : "generate1",
-      "start" : 34,
-      "length" : 58
+      "start" : 33,
+      "length" : 45
     },
     {
       "activity" : "generate2",
       "start" : 36,
-      "length" : 736
+      "length" : 750
     },
     {
       "activity" : "generate2",
       "start" : 37,
-      "length" : 1394
+      "length" : 1344
     },
     {
       "activity" : "generateValidationPack",
-      "start" : 46,
-      "length" : 1
+      "start" : 45,
+      "length" : 2
     }]
   },
   {
     "name" : "/input/includes/menu.xml",
     "size" : 607,
     "processes" : [{
-      "activity" : "scan",
-      "start" : 29,
-      "length" : 1
-    },
-    {
       "activity" : "generate2",
       "start" : 37,
-      "length" : 2
+      "length" : 1
     }]
   },
   {
@@ -139,7 +134,12 @@
   },
   {
     "name" : "/input/data/repo.json",
-    "size" : 103
+    "size" : 103,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 37,
+      "length" : 1
+    }]
   },
   {
     "name" : "/input/pagecontent/translationinfo.md",
@@ -164,11 +164,6 @@
   },
   {
     "name" : "/temp/pages/_includes/artifacts.xml",
-    "size" : 1675,
-    "processes" : [{
-      "activity" : "generate2",
-      "start" : 37,
-      "length" : 1
-    }]
+    "size" : 1675
   }]
 }

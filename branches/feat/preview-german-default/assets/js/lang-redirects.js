@@ -16,6 +16,13 @@
 // The corrected logic: redirect + return only on a language MATCH, and fall
 // through to the default (first) language after the loop when nothing matched.
 // Preserves the query string + hash (suffix), like base `main`.
+//
+// WHICH LANGUAGE "DEFAULT" MEANS: the publisher writes `langs` into the root
+// landing page in the order the IG declares them, `i18n-default-lang` first —
+// with `i18n-default-lang: de` and `i18n-lang: [en]` the array is
+// ["de","en"]. So `langs[0]` IS the IG's default language, and a visitor whose
+// browser matches neither language lands on it. Nothing here needs changing
+// when an IG switches its default; the order follows the setting.
 doRedirect();
 
 function doRedirect() {
