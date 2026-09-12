@@ -14,23 +14,20 @@ That is the module author's job and is documented in the module scaffold —
 
 ## Language model
 
-German is the default rendering language, English the additional one
-(`i18n-default-lang: de`, `i18n-lang: [en]`) — the model the KDS Dokument
-module uses.
+English is the default rendering language, German the additional one
+(`i18n-default-lang: en`, `i18n-lang: [de]`) — the same model as
+kerndatensatz-basis.
 
-> **Why German leads the guide:** an MII KDS module's guide and its published
-> package are German-first, and the preview exists to mirror what a module
-> does, so a module author who copies from here starts in the right place. The
-> MII meta wiki
+> **Why English leads the guide (this project's reading):** the MII meta wiki
 > ([Namenskonventionen für FHIR-Ressourcen in der MII](https://github.com/medizininformatik-initiative/kerndatensatz-meta/wiki/Namenskonventionen-für-FHIR‐Ressourcen-in-der-MII),
 > § Sprache) prefers German for a conformance resource's `description`/`name`/
-> `title` and requires a Translation extension whose content is shown "im
-> englischsprachigen Implementierungsleitfaden" — the English rendering that
-> `i18n-lang: [en]` produces. The wiki states no rule about which language the
-> narrative leads in, and modules differ: `kerndatensatz-basis` leads in
-> English. Nothing here forces a module's choice — a module sets its own
-> `i18n-default-lang`; this setting and the `language-model` CI job govern this
-> repository only.
+> `title`, but requires a Translation extension whose content is shown "im
+> englischsprachigen Implementierungsleitfaden". That phrasing assumes an
+> English guide, and `kerndatensatz-basis` is built that way, so this project
+> follows it. The wiki does not state the rule directly — if the TF KDS decides
+> otherwise, this choice (and the `language-model` CI job that pins it here) is
+> what changes. Resource *descriptions* stay German; the narrative guide leads
+> in English.
 
 ## Steps
 
@@ -94,9 +91,9 @@ input/translations/<lang>/ImplementationGuide-<ig-id>.po
 ```
 
 Here that is
-`input/translations/en/ImplementationGuide-de.medizininformatikinitiative.template.preview.po`;
-in a module it is the module's own `<ig-id>`. Same mechanism as the KDS Dokument
-module (`ImplementationGuide-mii-ig-dokument.po`).
+`input/translations/de/ImplementationGuide-de.medizininformatikinitiative.template.preview.po`;
+in a module it is the module's own `<ig-id>`. Same mechanism as
+`kerndatensatz-basis` (`ImplementationGuide-mii-ig-base.po`).
 
 **Prerequisite — the language must be a translation source.** The catalogue is
 picked up only from a folder listed in the `translation-sources` parameter of
@@ -104,15 +101,15 @@ picked up only from a folder listed in the `translation-sources` parameter of
 
 ```yaml
 parameters:
-  i18n-default-lang: de
+  i18n-default-lang: en
   i18n-lang:
-    - en
+    - de
   translation-sources:
-    - input/translations/en
+    - input/translations/de
 ```
 
 A catalogue in a folder that is not listed there is **silently ignored** — no
-warning, no error, just German titles on the translated pages.
+warning, no error, just English titles.
 
 **The rule for every entry:** each `msgid` must be the **exact** title as written
 in the `pages:` tree of `sushi-config.yaml`, character for character. A `msgid`
@@ -148,12 +145,12 @@ The preview ships two pages and one menu per language, purely so branding
 changes are reviewable in both renderings:
 
 ```text
-input/pagecontent/index.md                              # German (default)
-input/translations/en/pagecontent/index.md              # English — same file name
-input/pagecontent/translationinfo.md                    # German (default)
-input/translations/en/pagecontent/translationinfo.md    # English — same file name
-input/includes/menu.xml                                 # German
-input/translations/en/includes/menu.xml                 # English
+input/pagecontent/index.md                              # English (default)
+input/translations/de/pagecontent/index.md              # German — same file name
+input/pagecontent/translationinfo.md                    # English (default)
+input/translations/de/pagecontent/translationinfo.md    # German — same file name
+input/includes/menu.xml                                 # English
+input/translations/de/includes/menu.xml                 # German
 ```
 
 Keep each pair in step when you change either half. A page with no translation
@@ -181,7 +178,7 @@ Build the preview (or push a branch and open the CI preview) and confirm on
 | Symptom | Cause | Fix |
 | --- | --- | --- |
 | Footer/base labels blank in one language | No UI-string catalog for it in the pinned base | Vendor that language's `.po` files into `translations/` |
-| Page titles, breadcrumbs and the table of contents stay German on `/en/` although the content is English | The IG-level catalogue `input/translations/en/ImplementationGuide-<ig-id>.po` is missing; or its folder is not in `translation-sources`, in which case it is ignored without a warning; or a `msgid` does not match the `pages:` title character for character | Add the catalogue (step 2), list its folder in `translation-sources`, and copy each `msgid` verbatim from `sushi-config.yaml` — including the `Table of Contents` root entry |
+| Page titles, breadcrumbs and the table of contents stay English on `/de/` although the content is German | The IG-level catalogue `input/translations/de/ImplementationGuide-<ig-id>.po` is missing; or its folder is not in `translation-sources`, in which case it is ignored without a warning; or a `msgid` does not match the `pages:` title character for character | Add the catalogue (step 2), list its folder in `translation-sources`, and copy each `msgid` verbatim from `sushi-config.yaml` — including the `Table of Contents` root entry |
 | A menu label does not change with the language | The per-language `menu.xml` is missing, or a `menu:` property was added to `sushi-config.yaml` | Ship `input/translations/<lang>/includes/menu.xml`; never use the `menu:` property — it generates one untranslatable menu |
 | Language-switcher flag missing | The flag asset is not resolvable from the language folder | The template ships `content/assets/images/deu.svg` for exactly this reason |
 | The organisation name and link in the footer's copyright line stay English on `/de/` | They are not UI strings: the base reads them from the IG's single-valued `publisher` block and emits them before our footer fragment runs | Not fixable from the template — see the "Known limit" bullet in [`../styleguide.md`](../styleguide.md) §6 |
