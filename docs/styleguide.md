@@ -280,7 +280,7 @@ recorded limitation, §7.)
   ([translations/README.md](../translations/README.md),
   [add-translation.md](recipes/add-translation.md)).
 - Page titles (breadcrumbs, TOC, section captions) translate through the
-  IG-resource catalog `input/translations/de/ImplementationGuide-<id>.po` —
+  IG-resource catalog `input/translations/en/ImplementationGuide-<id>.po` —
   every page needs an `ImplementationGuide.definition.page.title` entry there,
   including "Table of Contents".
 - The only other literal texts allowed are bare URLs and `alt` texts quoting

@@ -42,8 +42,8 @@ permissions:
   actions: read # required by codeql-action/upload-sarif on private repos
 
 jobs:
-  # Guards the IG's language model: English-default with a German translation
-  # under input/translations/de/. The wording once survived the commit that
+  # Guards the IG's language model: German-default with an English translation
+  # under input/translations/en/. The wording once survived the commit that
   # flipped the config, so a grep is cheaper than the next audit.
   language-model:
     runs-on: ubuntu-latest

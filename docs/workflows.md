@@ -73,7 +73,7 @@ Notes:
 - **The `language-model` job** is content hygiene, not a scanner:
   `scripts/check-language-model.sh` fails the pull request when a file re-asserts
   the abandoned language model (the script lists the exact phrases). The IG is
-  English-default with a German translation under `input/translations/de/` —
+  German-default with an English translation under `input/translations/en/` —
   see [add-translation.md](recipes/add-translation.md). The job lives in
   `security-scan.yml` because that is the only pull-request-triggered workflow.
 - **The `tooling-tests` job** runs the repository's script tests

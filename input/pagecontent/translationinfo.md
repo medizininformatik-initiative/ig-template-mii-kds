@@ -1,46 +1,50 @@
-<!-- TRANSLATION INFORMATION — English is the IG's DEFAULT language, so this
-     file is the source. The German rendering is
-     input/translations/de/pagecontent/translationinfo.md.
-     This page exists because the base template's translation notice links to
-     translationinfo.html on every translated page; without it that link 404s. -->
+<!-- ÜBERSETZUNGSHINWEISE — Deutsch ist die STANDARDSPRACHE der IG, diese
+     Datei ist also die Quelle. Die englische Fassung liegt unter
+     input/translations/en/pagecontent/translationinfo.md.
+     Diese Seite existiert, weil der Übersetzungshinweis der Basisvorlage auf
+     jeder übersetzten Seite auf translationinfo.html verlinkt; ohne sie liefe
+     dieser Link ins Leere. -->
 
-This guide is authored in **English**, the IG's default language, and rendered
-additionally in **German** under `/de/`. Switch languages with the selector in
-the navigation bar.
+Dieser Leitfaden wird auf **Deutsch** verfasst — das ist die Standardsprache
+der IG — und zusätzlich auf **Englisch** unter `/en/` dargestellt. Die Sprache
+wechseln Sie über die Auswahl in der Navigationsleiste.
 
-The German rendering is written by hand in this repository — it is not a machine
-translation:
+Die englische Fassung ist im Repository von Hand geschrieben, es handelt sich
+nicht um eine maschinelle Übersetzung:
 
-| What is translated | Where it comes from |
+| Was übersetzt wird | Woher es stammt |
 | --- | --- |
-| Narrative pages | [`input/translations/de/pagecontent/`]({{site.data.repo.url}}/tree/{{site.data.repo.branch}}/input/translations/de/pagecontent) — one file per source page, same file name |
-| Navigation menu | [`input/translations/de/includes/menu.xml`]({{site.data.repo.url}}/blob/{{site.data.repo.branch}}/input/translations/de/includes/menu.xml) |
-| The template's own UI strings (footer, table headers, buttons) | [`translations/stringsBase-de.po`]({{site.data.repo.url}}/blob/{{site.data.repo.branch}}/translations/stringsBase-de.po) and [`stringsArtifacts-de.po`]({{site.data.repo.url}}/blob/{{site.data.repo.branch}}/translations/stringsArtifacts-de.po) — the base template's German catalogs, vendored here because the pinned base release ships none |
+| Narrative Seiten | [`input/translations/en/pagecontent/`]({{site.data.repo.url}}/tree/{{site.data.repo.branch}}/input/translations/en/pagecontent) — eine Datei je Quellseite, gleicher Dateiname |
+| Navigationsmenü | [`input/translations/en/includes/menu.xml`]({{site.data.repo.url}}/blob/{{site.data.repo.branch}}/input/translations/en/includes/menu.xml) |
+| UI-Texte der Vorlage (Fußzeile, Tabellenköpfe, Schaltflächen) | Die englischen Texte bringt die Basisvorlage selbst mit. Die deutschen Kataloge [`translations/stringsBase-de.po`]({{site.data.repo.url}}/blob/{{site.data.repo.branch}}/translations/stringsBase-de.po) und [`stringsArtifacts-de.po`]({{site.data.repo.url}}/blob/{{site.data.repo.branch}}/translations/stringsArtifacts-de.po) sind hier mitgeliefert, weil die gepinnte Basis-Version keine enthält |
 
-A page that has no German counterpart is rendered in English on `/de/`, with a
-notice at the top of the page saying so.
+Eine Seite ohne englische Entsprechung wird unter `/en/` auf Deutsch dargestellt,
+mit einem entsprechenden Hinweis am Seitenanfang.
 
-### Feedback on a translation
+### Rückmeldungen zu einer Übersetzung
 
-Write to the HL7 FHIR Zulip, stream `german/mi-initiative`
-(<https://chat.fhir.org>), naming the page and the wording — or open an issue on
-the repository this guide is built from. Corrections go through the same
-pull-request review as any other change; the step-by-step is in the repository's
+Bitte im HL7-FHIR-Zulip, Stream `german/mi-initiative`
+(<https://chat.fhir.org>), Seite und Formulierung nennen — oder ein Issue im
+Repository anlegen, aus dem dieser Leitfaden gebaut wird. Korrekturen durchlaufen
+dieselbe Pull-Request-Prüfung wie jede andere Änderung; die
+Schritt-für-Schritt-Anleitung steht im Repository unter
 [`docs/recipes/add-translation.md`]({{site.data.repo.url}}/blob/{{site.data.repo.branch}}/docs/recipes/add-translation.md).
 
-> The repository's issue tracker is deliberately not linked with a fixed URL:
-> a built guide outlives repository moves — such as the move to the MII's
-> GitHub organisation, `medizininformatik-initiative` — and a URL burned into
-> an older build would go stale. Open the issue on the repository this guide
-> was built from; Zulip is reachable regardless. The **file links** on this
-> page do carry a repository URL — it comes from one substitution point,
-> `input/data/repo.json`, which the migration checklist repoints in a single
-> edit; links in builds published before the move keep resolving through
-> GitHub's repository redirect.
+> Der Issue-Tracker des Repositories ist hier bewusst nicht mit fester URL
+> verlinkt: Ein einmal gebauter Leitfaden überdauert Repository-Umzüge — etwa
+> den Umzug in die GitHub-Organisation der MII
+> (`medizininformatik-initiative`) — und eine in einen älteren Build
+> eingebrannte URL würde veralten. Legen Sie das Issue im Repository an, aus
+> dem dieser Leitfaden gebaut wurde; Zulip bleibt unabhängig davon erreichbar.
+> Die **Dateilinks** dieser Seite tragen dagegen eine Repository-URL — sie
+> stammt aus einem einzigen Substitutionspunkt, `input/data/repo.json`, den
+> die Migrations-Checkliste mit einer einzigen Änderung umstellt; Links in
+> vor dem Umzug veröffentlichten Builds funktionieren über die
+> Repository-Weiterleitung von GitHub weiter.
 {: .ig-highlight .ig-highlight-grey}
 
-> **Scope of this guide:** it is the *preview* of the KDS IG template
-> (`de.medizininformatikinitiative.template`), not an MII Core Dataset module.
-> It exists so the branding can be reviewed in both languages before a template
-> release. A module IG carries its own translation-information page.
+> **Geltungsbereich:** Dies ist die *Vorschau* der KDS-IG-Vorlage
+> (`de.medizininformatikinitiative.template`) und kein MII-Kerndatensatz-Modul.
+> Sie dient nur dazu, das Branding vor einem Release in beiden Sprachen zu
+> prüfen. Ein Modul-IG bringt seine eigene Seite mit Übersetzungshinweisen mit.
 {: .ig-highlight .ig-highlight-grey}

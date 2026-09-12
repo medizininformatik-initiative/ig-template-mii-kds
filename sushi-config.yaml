@@ -6,7 +6,7 @@ title: MII KDS IG Template — Preview
 description: >-
   Minimal preview IG that builds the de.medizininformatikinitiative.template IG
   template standalone so its branding (header, footer, CSS, logo) is rendered
-  and visually reviewable in English (default) and German. Not an MII KDS
+  and visually reviewable in German (default) and English. Not an MII KDS
   module.
 status: draft
 version: 1.3.4
@@ -19,13 +19,18 @@ publisher:
   url: https://www.netzwerk-universitaetsmedizin.de
 jurisdiction: urn:iso:std:iso:3166#DE "Germany"
 parameters:
-  i18n-default-lang: en
+  # German leads: an MII KDS module's guide and package are German-first, and the
+  # preview mirrors the model a module uses (docs/recipes/add-translation.md).
+  i18n-default-lang: de
   i18n-lang:
-    - de
+    - en
   translation-sources:
-    - input/translations/de
+    - input/translations/en
+# Titles are in the DEFAULT language. Their English forms live as units in
+# input/translations/en/ImplementationGuide-<id>.po; msgid must match these
+# strings character for character.
 pages:
   index.md:
-    title: Home
+    title: Startseite
   translationinfo.md:
-    title: Translation information
+    title: Hinweise zur Übersetzung
