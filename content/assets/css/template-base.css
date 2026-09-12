@@ -101,6 +101,7 @@
 table:not([class]):not([style]):not([border]):not([data-fhir]) {
   border-collapse: collapse;
   margin-bottom: 10px;
+  width: 100%; /* use the content column; a shrink-to-fit table wastes the page width and wraps cells early */
 }
 table:not([class]):not([style]):not([border]):not([data-fhir]) th,
 table:not([class]):not([style]):not([border]):not([data-fhir]) td {
@@ -130,6 +131,15 @@ table:not([class]):not([style]):not([border]):not([data-fhir]) th {
 #segment-content img {
   max-width: 100%;
   height: auto;
+}
+
+/* Publisher-generated PlantUML diagrams (ExampleScenario sequence and class diagrams) are
+   inlined as <svg> with a fixed pixel width AND height in the style attribute, so unlike an
+   <img> they ignore the img guard above and overflow the content column. Cap the width and let
+   the height follow the viewBox; the inline height needs !important to yield. */
+#segment-content svg[data-diagram-type] {
+  max-width: 100%;
+  height: auto !important;
 }
 
 /* ── structure-tabs include ── spacing for the tabbed structure view ──────── */
@@ -304,3 +314,20 @@ html[data-fontsize="2"] #segment-footer { zoom: 1.25; }
   --mii-table-header-bg-color: var(--ig-table-header-bg-color);
   --mii-table-header-text-color: var(--ig-table-header-text-color);
 }
+
+/* ── Publisher JSON blocks ───────────────────────────────────────────────────
+   (The publisher's own tables — table.grid from {% sql %} included — stay
+   unstyled here on purpose, styleguide §5; a module that wants its sql tables
+   full-width gives them a class of its own via the directive's "class".)
+   The publisher marks SOME of its own JSON renderings (<pre class="json">)
+   with Prism's class="language-json" — measured: one of four otherwise
+   identical DocumentReference examples — and Prism then recolours that block
+   (strings green, punctuation grey) while its siblings keep the publisher's
+   inline colouring. Inside pre.json the Prism tokens inherit the publisher's
+   colours, so every JSON block looks the same. */
+/* Prism.js also copies its language class onto the parent <pre> at load time, so
+   pre[class*="language-"] rules replace fhir.css's pre.json look (green #EFFFEF,
+   11px, 5px padding) with Prism's theme; this puts the publisher's values back. */
+pre.json[class*="language-"] { background: #EFFFEF; padding: 5px; margin: 0 0 10px; font-size: 11px; text-shadow: none; }
+pre.json code[class*="language-"] { color: inherit; text-shadow: none; }
+pre.json code[class*="language-"] .token { color: inherit; background: transparent; text-shadow: none; font-weight: inherit; }
