@@ -1,23 +1,36 @@
 {
   "resourceType" : "ImplementationGuide",
   "id" : "de.medizininformatikinitiative.template.preview",
-  "language" : "de",
+  "language" : "en",
   "text" : {
     "status" : "generated",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div xml:lang=\"de\" lang=\"de\"><hr/><p><b>German</b></p><hr/><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide de.medizininformatikinitiative.template.preview</b></p><a name=\"de.medizininformatikinitiative.template.preview\"> </a><a name=\"hcde.medizininformatikinitiative.template.preview\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de</p></div><h2>MIIKDSTemplatePreview</h2><p>The official URL for this implementation guide is: </p><pre>https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview</pre><div><p>Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in German (default) and English. Not an MII KDS module.</p>\n</div></div><div xml:lang=\"en\" lang=\"en\"><hr/><p><b>English</b></p><hr/><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide de.medizininformatikinitiative.template.preview</b></p><a name=\"en-de.medizininformatikinitiative.template.preview\"> </a><a name=\"en-hcde.medizininformatikinitiative.template.preview\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de</p></div><h2>MIIKDSTemplatePreview</h2><p>The official URL for this implementation guide is: </p><pre>https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview</pre><div><p>Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in German (default) and English. Not an MII KDS module.</p>\n</div></div></div>"
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div xml:lang=\"en\" lang=\"en\"><hr/><p><b>English</b></p><hr/><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide de.medizininformatikinitiative.template.preview</b></p><a name=\"de.medizininformatikinitiative.template.preview\"> </a><a name=\"hcde.medizininformatikinitiative.template.preview\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: en</p></div><h2>MIIKDSTemplatePreview</h2><p>The official URL for this implementation guide is: </p><pre>https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview</pre><div><p>Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in English (default) and German. Not an MII KDS module.</p>\n</div></div><div xml:lang=\"de\" lang=\"de\"><hr/><p><b>German</b></p><hr/><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide de.medizininformatikinitiative.template.preview</b></p><a name=\"de-de.medizininformatikinitiative.template.preview\"> </a><a name=\"de-hcde.medizininformatikinitiative.template.preview\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: en</p></div><h2>MIIKDSTemplatePreview</h2><p>The official URL for this implementation guide is: </p><pre>https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview</pre><div><p>Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in English (default) and German. Not an MII KDS module.</p>\n</div></div></div>"
   },
   "url" : "https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview",
   "version" : "1.3.4",
   "name" : "MIIKDSTemplatePreview",
   "title" : "MII KDS IG Template — Preview",
+  "_title" : {
+    "extension" : [{
+      "extension" : [{
+        "url" : "lang",
+        "valueCode" : "de"
+      },
+      {
+        "url" : "content",
+        "valueString" : "MII-KDS-IG-Vorlage — Vorschau"
+      }],
+      "url" : "http://hl7.org/fhir/StructureDefinition/translation"
+    }]
+  },
   "status" : "draft",
-  "date" : "2026-09-12T22:58:50+00:00",
+  "date" : "2026-09-12T23:08:19+00:00",
   "publisher" : "NUM-DIZ",
   "_publisher" : {
     "extension" : [{
       "extension" : [{
         "url" : "lang",
-        "valueCode" : "en"
+        "valueCode" : "de"
       },
       {
         "url" : "content",
@@ -33,7 +46,7 @@
       "value" : "https://www.netzwerk-universitaetsmedizin.de"
     }]
   }],
-  "description" : "Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in German (default) and English. Not an MII KDS module.",
+  "description" : "Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in English (default) and German. Not an MII KDS module.",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -94,7 +107,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "de"
+        "valueString" : "en"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -105,7 +118,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "en"
+        "valueString" : "de"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -116,7 +129,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "input/translations/en"
+        "valueString" : "input/translations/de"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -406,7 +419,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "de"
+        "valueString" : "en"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -417,7 +430,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "en"
+        "valueString" : "de"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -428,7 +441,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "input/translations/en"
+        "valueString" : "input/translations/de"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -704,6 +717,19 @@
       }],
       "nameUrl" : "toc.html",
       "title" : "Table of Contents",
+      "_title" : {
+        "extension" : [{
+          "extension" : [{
+            "url" : "lang",
+            "valueCode" : "de"
+          },
+          {
+            "url" : "content",
+            "valueString" : "Inhaltsverzeichnis"
+          }],
+          "url" : "http://hl7.org/fhir/StructureDefinition/translation"
+        }]
+      },
       "generation" : "html",
       "page" : [{
         "extension" : [{
@@ -711,16 +737,16 @@
           "valueUrl" : "index.html"
         }],
         "nameUrl" : "index.html",
-        "title" : "Startseite",
+        "title" : "Home",
         "_title" : {
           "extension" : [{
             "extension" : [{
               "url" : "lang",
-              "valueCode" : "en"
+              "valueCode" : "de"
             },
             {
               "url" : "content",
-              "valueString" : "Home"
+              "valueString" : "Startseite"
             }],
             "url" : "http://hl7.org/fhir/StructureDefinition/translation"
           }]
@@ -733,16 +759,16 @@
           "valueUrl" : "translationinfo.html"
         }],
         "nameUrl" : "translationinfo.html",
-        "title" : "Hinweise zur Übersetzung",
+        "title" : "Translation information",
         "_title" : {
           "extension" : [{
             "extension" : [{
               "url" : "lang",
-              "valueCode" : "en"
+              "valueCode" : "de"
             },
             {
               "url" : "content",
-              "valueString" : "Translation information"
+              "valueString" : "Hinweise zur Übersetzung"
             }],
             "url" : "http://hl7.org/fhir/StructureDefinition/translation"
           }]

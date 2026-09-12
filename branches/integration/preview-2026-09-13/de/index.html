@@ -140,7 +140,7 @@
 
 
         <div id="ig-status">
-          <p><span style="font-size:12pt;font-weight:bold">MII KDS IG Template — Preview</span>
+          <p><span style="font-size:12pt;font-weight:bold">MII-KDS-IG-Vorlage — Vorschau</span>
             <br/>
             <span style="display:inline-block;">1.3.4 - 
 
@@ -171,12 +171,8 @@
             </button>
             <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-              <!-- Menu in the IG's DEFAULT language (German).
-     The IG Publisher renders the menu from this file. To translate it, ship a
-     per-language copy at input/translations/<lang>/includes/menu.xml — this is
-     the mechanism the HL7 reference IG FHIR/multi-lang-test-ig uses, and it is
-     the ONLY way to get a translated menu: the `menu:` property in
-     sushi-config.yaml generates a single menu.xml and cannot be translated. -->
+              <!-- German translation of input/includes/menu.xml.
+     Keep the href targets IDENTICAL to the source menu; translate only labels. -->
 <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
   <li><a href="index.html">Startseite</a></li>
   <li><a href="artifacts.html">Artefakte</a></li>
@@ -214,7 +210,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Startseite</b></li>
+          <li><a href='toc.html'><b>Inhaltsverzeichnis</b></a></li><li><b>Startseite</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -296,13 +292,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
 
+<div class="ig-highlight ig-highlight-grey">
+
+  <p>Diese Seite enthält Übersetzungen aus der Originalsprache, in der der Leitfaden verfasst wurde.  Informationen zu diesen Übersetzungen und Anweisungen zum Abgeben von Feedback zu den Übersetzungen finden Sie <a href="translationinfo.html">hier</a>.</p>
+
+</div>
+
 <p>Diese Seite dient ausschließlich dem <strong>Vorschau</strong> der IG-Template-Vorlage
 <code class="language-plaintext highlighter-rouge">de.medizininformatikinitiative.template</code>. Sie ist <strong>kein</strong> MII-Kerndatensatz-Modul.</p>
 
-<p>Die Vorschau baut die Vorlage eigenständig, damit Branding-Änderungen
+<p>Der Vorschau baut die Vorlage eigenständig, damit Branding-Änderungen
 (Kopfzeile, Fußzeile, CSS, Logo) in einer gerenderten IG geprüft werden können,
-bevor eine Template-Version veröffentlicht wird. Der Build rendert auf Deutsch
-(Standardsprache) und Englisch, um die sprachabhängige Kopf- und Fußzeile zu
+bevor eine Template-Version veröffentlicht wird. Der Build rendert auf Englisch
+(Standardsprache) und Deutsch, um die sprachabhängige Kopf- und Fußzeile zu
 prüfen.</p>
 
 <p>Was die Vorlage ist und wie ein Modul sie verwendet, steht in der <code class="language-plaintext highlighter-rouge">README.md</code>
@@ -368,7 +370,7 @@ Orange = Warnung, Rot = Wichtig, Grau = Hinweis.</p>
 
           IG © 2027+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.netzwerk-universitaetsmedizin.de">NUM-DIZ</a>.  
           Package de.medizininformatikinitiative.template.preview#1.3.4 basiert auf <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
-          Erstellt <span title="Sat, Sep 12, 2026 22:58+0000">2026-09-12</span>
+          Erstellt <span title="Sat, Sep 12, 2026 23:08+0000">2026-09-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
             <!-- Branding override for the fhir2.base.template footer fragment.

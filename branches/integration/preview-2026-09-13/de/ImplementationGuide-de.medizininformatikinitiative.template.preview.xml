@@ -4,15 +4,15 @@
   <id value="de.medizininformatikinitiative.template.preview"/>
   <language value="de"/>
   <text>
-    <status value="generated"/><div xml:lang="de" lang="de"><hr/><p><b>German</b></p><hr/><p class="res-header-id"><b>Generated Narrative: ImplementationGuide de.medizininformatikinitiative.template.preview</b></p><a name="de.medizininformatikinitiative.template.preview"> </a><a name="hcde.medizininformatikinitiative.template.preview"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Language: de</p></div><h2>MIIKDSTemplatePreview</h2><p>The official URL for this implementation guide is: </p><pre>https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview</pre><div><p>Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in German (default) and English. Not an MII KDS module.</p>
+    <status value="generated"/><div xml:lang="de" lang="de"><hr/><p><b>German</b></p><hr/><p class="res-header-id"><b>Generated Narrative: ImplementationGuide de.medizininformatikinitiative.template.preview</b></p><a name="de-de.medizininformatikinitiative.template.preview"> </a><a name="de-hcde.medizininformatikinitiative.template.preview"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Language: en</p></div><h2>MIIKDSTemplatePreview</h2><p>The official URL for this implementation guide is: </p><pre>https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview</pre><div><p>Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in English (default) and German. Not an MII KDS module.</p>
 </div></div>
   </text>
   <url value="https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview"/>
   <version value="1.3.4"/>
   <name value="MIIKDSTemplatePreview"/>
-  <title value="MII KDS IG Template — Preview"/>
+  <title value="MII-KDS-IG-Vorlage — Vorschau"/>
   <status value="draft"/>
-  <date value="2026-09-12T22:58:50+00:00"/>
+  <date value="2026-09-12T23:08:19+00:00"/>
   <publisher value="NUM-DIZ"/>
   <contact>
     <name value="NUM-DIZ"/>
@@ -21,7 +21,7 @@
       <value value="https://www.netzwerk-universitaetsmedizin.de"/>
     </telecom>
   </contact>
-  <description value="Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in German (default) and English. Not an MII KDS module."/>
+  <description value="Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in English (default) and German. Not an MII KDS module."/>
   <jurisdiction>
     <coding>
       <system value="urn:iso:std:iso:3166"/>
@@ -70,7 +70,7 @@
         <valueString value="i18n-default-lang"/>
       </extension>
       <extension url="value">
-        <valueString value="de"/>
+        <valueString value="en"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -78,7 +78,7 @@
         <valueString value="i18n-lang"/>
       </extension>
       <extension url="value">
-        <valueString value="en"/>
+        <valueString value="de"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -86,7 +86,7 @@
         <valueString value="translation-sources"/>
       </extension>
       <extension url="value">
-        <valueString value="input/translations/en"/>
+        <valueString value="input/translations/de"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -297,7 +297,7 @@
         <valueCode value="i18n-default-lang"/>
       </extension>
       <extension url="value">
-        <valueString value="de"/>
+        <valueString value="en"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -305,7 +305,7 @@
         <valueCode value="i18n-lang"/>
       </extension>
       <extension url="value">
-        <valueString value="en"/>
+        <valueString value="de"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -313,7 +313,7 @@
         <valueCode value="translation-sources"/>
       </extension>
       <extension url="value">
-        <valueString value="input/translations/en"/>
+        <valueString value="input/translations/de"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -516,7 +516,7 @@
         <valueUrl value="toc.html"/>
       </extension>
       <nameUrl value="toc.html"/>
-      <title value="Table of Contents"/>
+      <title value="Inhaltsverzeichnis"/>
       <generation value="html"/>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">

@@ -1,6 +1,6 @@
 # Preview Model - MII KDS IG Template — Preview v1.3.4
 
-* [**Table of Contents**](toc.md)
+* [**Inhaltsverzeichnis**](toc.md)
 * [**Artefaktübersicht**](artifacts.md)
 * **Preview Model**
 
@@ -65,13 +65,13 @@ Weitere Repräsentationen des Profils: [CSV](../StructureDefinition-preview-mode
   "name" : "PreviewModel",
   "title" : "Preview Model",
   "status" : "draft",
-  "date" : "2026-09-12T22:58:50+00:00",
+  "date" : "2026-09-12T23:08:19+00:00",
   "publisher" : "NUM-DIZ",
   "_publisher" : {
     "extension" : [{
       "extension" : [{
         "url" : "lang",
-        "valueCode" : "en"
+        "valueCode" : "de"
       },
       {
         "url" : "content",

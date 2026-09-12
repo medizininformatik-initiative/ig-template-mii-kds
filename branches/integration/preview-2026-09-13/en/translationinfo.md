@@ -5,19 +5,17 @@
 
 ## Translation information
 
-This page includes translations from the original source language in which the guide was authored. Information on these translations and instructions on how to provide feedback on the translations can be found [here](translationinfo.md).
+This guide is authored in **English**, the IG's default language, and rendered additionally in **German** under `/de/`. Switch languages with the selector in the navigation bar.
 
-This guide is authored in **German**, the IG's default language, and rendered additionally in **English** under `/en/`. Switch languages with the selector in the navigation bar.
-
-The English rendering is written by hand in this repository — it is not a machine translation:
+The German rendering is written by hand in this repository — it is not a machine translation:
 
 | | |
 | :--- | :--- |
-| Narrative pages | [`input/translations/en/pagecontent/`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/tree/main/input/translations/en/pagecontent)— one file per source page, same file name |
-| Navigation menu | [`input/translations/en/includes/menu.xml`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/input/translations/en/includes/menu.xml) |
-| The template's own UI strings (footer, table headers, buttons) | The English wording comes from the base template itself. The German catalogs[`translations/stringsBase-de.po`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsBase-de.po)and[`stringsArtifacts-de.po`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsArtifacts-de.po)are vendored here because the pinned base release ships none |
+| Narrative pages | [`input/translations/de/pagecontent/`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/tree/main/input/translations/de/pagecontent)— one file per source page, same file name |
+| Navigation menu | [`input/translations/de/includes/menu.xml`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/input/translations/de/includes/menu.xml) |
+| The template's own UI strings (footer, table headers, buttons) | [`translations/stringsBase-de.po`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsBase-de.po)and[`stringsArtifacts-de.po`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsArtifacts-de.po)— the base template's German catalogs, vendored here because the pinned base release ships none |
 
-A page that has no English counterpart is rendered in German on `/en/`, with a notice at the top of the page saying so.
+A page that has no German counterpart is rendered in English on `/de/`, with a notice at the top of the page saying so.
 
 ### Feedback on a translation
 

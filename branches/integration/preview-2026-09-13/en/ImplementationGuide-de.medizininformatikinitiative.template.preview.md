@@ -8,19 +8,32 @@
 {
   "resourceType" : "ImplementationGuide",
   "id" : "de.medizininformatikinitiative.template.preview",
-  "language" : "de",
+  "language" : "en",
   "url" : "https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview",
   "version" : "1.3.4",
   "name" : "MIIKDSTemplatePreview",
   "title" : "MII KDS IG Template — Preview",
+  "_title" : {
+    "extension" : [{
+      "extension" : [{
+        "url" : "lang",
+        "valueCode" : "de"
+      },
+      {
+        "url" : "content",
+        "valueString" : "MII-KDS-IG-Vorlage — Vorschau"
+      }],
+      "url" : "http://hl7.org/fhir/StructureDefinition/translation"
+    }]
+  },
   "status" : "draft",
-  "date" : "2026-09-12T22:58:50+00:00",
+  "date" : "2026-09-12T23:08:19+00:00",
   "publisher" : "NUM-DIZ",
   "_publisher" : {
     "extension" : [{
       "extension" : [{
         "url" : "lang",
-        "valueCode" : "en"
+        "valueCode" : "de"
       },
       {
         "url" : "content",
@@ -36,7 +49,7 @@
       "value" : "https://www.netzwerk-universitaetsmedizin.de"
     }]
   }],
-  "description" : "Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in German (default) and English. Not an MII KDS module.",
+  "description" : "Minimal preview IG that builds the de.medizininformatikinitiative.template IG template standalone so its branding (header, footer, CSS, logo) is rendered and visually reviewable in English (default) and German. Not an MII KDS module.",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -97,7 +110,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "de"
+        "valueString" : "en"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -108,7 +121,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "en"
+        "valueString" : "de"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -119,7 +132,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "input/translations/en"
+        "valueString" : "input/translations/de"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -409,7 +422,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "de"
+        "valueString" : "en"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -420,7 +433,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "en"
+        "valueString" : "de"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -431,7 +444,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "input/translations/en"
+        "valueString" : "input/translations/de"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -711,6 +724,19 @@
       }],
       "nameUrl" : "toc.html",
       "title" : "Table of Contents",
+      "_title" : {
+        "extension" : [{
+          "extension" : [{
+            "url" : "lang",
+            "valueCode" : "de"
+          },
+          {
+            "url" : "content",
+            "valueString" : "Inhaltsverzeichnis"
+          }],
+          "url" : "http://hl7.org/fhir/StructureDefinition/translation"
+        }]
+      },
       "generation" : "html",
       "page" : [{
         "extension" : [{
@@ -718,16 +744,16 @@
           "valueUrl" : "index.html"
         }],
         "nameUrl" : "index.html",
-        "title" : "Startseite",
+        "title" : "Home",
         "_title" : {
           "extension" : [{
             "extension" : [{
               "url" : "lang",
-              "valueCode" : "en"
+              "valueCode" : "de"
             },
             {
               "url" : "content",
-              "valueString" : "Home"
+              "valueString" : "Startseite"
             }],
             "url" : "http://hl7.org/fhir/StructureDefinition/translation"
           }]
@@ -740,16 +766,16 @@
           "valueUrl" : "translationinfo.html"
         }],
         "nameUrl" : "translationinfo.html",
-        "title" : "Hinweise zur Übersetzung",
+        "title" : "Translation information",
         "_title" : {
           "extension" : [{
             "extension" : [{
               "url" : "lang",
-              "valueCode" : "en"
+              "valueCode" : "de"
             },
             {
               "url" : "content",
-              "valueString" : "Translation information"
+              "valueString" : "Hinweise zur Übersetzung"
             }],
             "url" : "http://hl7.org/fhir/StructureDefinition/translation"
           }]

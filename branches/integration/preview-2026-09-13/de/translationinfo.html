@@ -136,7 +136,7 @@
 
 
         <div id="ig-status">
-          <p><span style="font-size:12pt;font-weight:bold">MII KDS IG Template — Preview</span>
+          <p><span style="font-size:12pt;font-weight:bold">MII-KDS-IG-Vorlage — Vorschau</span>
             <br/>
             <span style="display:inline-block;">1.3.4 - 
 
@@ -167,12 +167,8 @@
             </button>
             <a href="http://hl7.org/fhir/R4/index.html" class="navbar-brand hidden">FHIR</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-                <!-- Menu in the IG's DEFAULT language (German).
-     The IG Publisher renders the menu from this file. To translate it, ship a
-     per-language copy at input/translations/<lang>/includes/menu.xml — this is
-     the mechanism the HL7 reference IG FHIR/multi-lang-test-ig uses, and it is
-     the ONLY way to get a translated menu: the `menu:` property in
-     sushi-config.yaml generates a single menu.xml and cannot be translated. -->
+                <!-- German translation of input/includes/menu.xml.
+     Keep the href targets IDENTICAL to the source menu; translate only labels. -->
 <ul class="nav navbar-nav">
   <li><a href="index.html">Startseite</a></li>
   <li><a href="artifacts.html">Artefakte</a></li>
@@ -210,7 +206,7 @@
     <div id="segment-breadcrumb" class="segment">    <!-- segment-breadcrumb -->
       <div class="container">    <!-- container -->
         <ul class="breadcrumb">
-          <li><a href="toc.html"><b>Table of Contents</b></a></li><li><b>Hinweise zur Übersetzung</b></li>
+          <li><a href="toc.html"><b>Inhaltsverzeichnis</b></a></li><li><b>Hinweise zur Übersetzung</b></li>
 
         </ul>
       </div>    <!-- /container -->
@@ -250,18 +246,21 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown. -->
 </div>
 
-  <!-- ÜBERSETZUNGSHINWEISE — Deutsch ist die STANDARDSPRACHE der IG, diese
-     Datei ist also die Quelle. Die englische Fassung liegt unter
-     input/translations/en/pagecontent/translationinfo.md.
-     Diese Seite existiert, weil der Übersetzungshinweis der Basisvorlage auf
-     jeder übersetzten Seite auf translationinfo.html verlinkt; ohne sie liefe
-     dieser Link ins Leere. -->
+<div class="ig-highlight ig-highlight-grey">
 
-<p>Dieser Leitfaden wird auf <strong>Deutsch</strong> verfasst — das ist die Standardsprache
-der IG — und zusätzlich auf <strong>Englisch</strong> unter <code class="language-plaintext highlighter-rouge">/en/</code> dargestellt. Die Sprache
+  <p>Diese Seite enthält Übersetzungen aus der Originalsprache, in der der Leitfaden verfasst wurde.  Informationen zu diesen Übersetzungen und Anweisungen zum Abgeben von Feedback zu den Übersetzungen finden Sie <a href="translationinfo.html">hier</a>.</p>
+
+</div>
+
+  <!-- ÜBERSETZUNGSHINWEISE — GERMAN TRANSLATION of the source page
+     input/pagecontent/translationinfo.md. Keep structure, headings and links
+     1:1 with the source; translate only the text. -->
+
+<p>Dieser Leitfaden wird auf <strong>Englisch</strong> verfasst — das ist die Standardsprache
+der IG — und zusätzlich auf <strong>Deutsch</strong> unter <code class="language-plaintext highlighter-rouge">/de/</code> dargestellt. Die Sprache
 wechseln Sie über die Auswahl in der Navigationsleiste.</p>
 
-<p>Die englische Fassung ist im Repository von Hand geschrieben, es handelt sich
+<p>Die deutsche Fassung ist im Repository von Hand geschrieben, es handelt sich
 nicht um eine maschinelle Übersetzung:</p>
 
 <table>
@@ -274,25 +273,25 @@ nicht um eine maschinelle Übersetzung:</p>
   <tbody>
     <tr>
       <td>Narrative Seiten</td>
-      <td><a name="l343">​</a><a href="https://github.com/medizininformatik-initiative/ig-template-mii-kds/tree/main/input/translations/en/pagecontent"><code class="language-plaintext highlighter-rouge">input/translations/en/pagecontent/</code></a> — eine Datei je Quellseite, gleicher Dateiname</td>
+      <td><a name="l352">​</a><a href="https://github.com/medizininformatik-initiative/ig-template-mii-kds/tree/main/input/translations/de/pagecontent"><code class="language-plaintext highlighter-rouge">input/translations/de/pagecontent/</code></a> — eine Datei je Quellseite, gleicher Dateiname</td>
     </tr>
     <tr>
       <td>Navigationsmenü</td>
-      <td><a name="l355">​</a><a href="https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/input/translations/en/includes/menu.xml"><code class="language-plaintext highlighter-rouge">input/translations/en/includes/menu.xml</code></a></td>
+      <td><a name="l364">​</a><a href="https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/input/translations/de/includes/menu.xml"><code class="language-plaintext highlighter-rouge">input/translations/de/includes/menu.xml</code></a></td>
     </tr>
     <tr>
       <td>UI-Texte der Vorlage (Fußzeile, Tabellenköpfe, Schaltflächen)</td>
-      <td><a name="l366">​</a>Die englischen Texte bringt die Basisvorlage selbst mit. Die deutschen Kataloge <a href="https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsBase-de.po"><code class="language-plaintext highlighter-rouge">translations/stringsBase-de.po</code></a> und <a href="https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsArtifacts-de.po"><code class="language-plaintext highlighter-rouge">stringsArtifacts-de.po</code></a> sind hier mitgeliefert, weil die gepinnte Basis-Version keine enthält</td>
+      <td><a name="l375">​</a><a href="https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsBase-de.po"><code class="language-plaintext highlighter-rouge">translations/stringsBase-de.po</code></a> und <a href="https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsArtifacts-de.po"><code class="language-plaintext highlighter-rouge">stringsArtifacts-de.po</code></a> — die deutschen Kataloge der Basisvorlage, hier mitgeliefert, weil die gepinnte Basis-Version keine enthält</td>
     </tr>
   </tbody>
 </table>
 
-<p>Eine Seite ohne englische Entsprechung wird unter <code class="language-plaintext highlighter-rouge">/en/</code> auf Deutsch dargestellt,
+<p>Eine Seite ohne deutsche Entsprechung wird unter <code class="language-plaintext highlighter-rouge">/de/</code> auf Englisch dargestellt,
 mit einem entsprechenden Hinweis am Seitenanfang.</p>
 
 <h3 id="rückmeldungen-zu-einer-übersetzung">Rückmeldungen zu einer Übersetzung</h3>
 
-<p><a name="l389">​</a>Bitte im HL7-FHIR-Zulip, Stream <code class="language-plaintext highlighter-rouge">german/mi-initiative</code>
+<p><a name="l397">​</a>Bitte im HL7-FHIR-Zulip, Stream <code class="language-plaintext highlighter-rouge">german/mi-initiative</code>
 (<a href="https://chat.fhir.org">https://chat.fhir.org</a>), Seite und Formulierung nennen — oder ein Issue im
 Repository anlegen, aus dem dieser Leitfaden gebaut wird. Korrekturen durchlaufen
 dieselbe Pull-Request-Prüfung wie jede andere Änderung; die
@@ -345,7 +344,7 @@ prüfen. Ein Modul-IG bringt seine eigene Seite mit Übersetzungshinweisen mit.<
 
           IG &copy; 2027+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.netzwerk-universitaetsmedizin.de">NUM-DIZ</a>.  
           Package de.medizininformatikinitiative.template.preview#1.3.4 basiert auf <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
-          Erstellt <span title="Sat, Sep 12, 2026 22:58+0000">2026-09-12</span>
+          Erstellt <span title="Sat, Sep 12, 2026 23:08+0000">2026-09-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
               <!-- Branding override for the fhir2.base.template footer fragment.

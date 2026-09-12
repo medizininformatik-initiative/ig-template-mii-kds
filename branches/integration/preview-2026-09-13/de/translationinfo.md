@@ -1,21 +1,23 @@
 # Hinweise zur Übersetzung - MII KDS IG Template — Preview v1.3.4
 
-* [**Table of Contents**](toc.md)
+* [**Inhaltsverzeichnis**](toc.md)
 * **Hinweise zur Übersetzung**
 
 ## Hinweise zur Übersetzung
 
-Dieser Leitfaden wird auf **Deutsch** verfasst — das ist die Standardsprache der IG — und zusätzlich auf **Englisch** unter `/en/` dargestellt. Die Sprache wechseln Sie über die Auswahl in der Navigationsleiste.
+Diese Seite enthält Übersetzungen aus der Originalsprache, in der der Leitfaden verfasst wurde. Informationen zu diesen Übersetzungen und Anweisungen zum Abgeben von Feedback zu den Übersetzungen finden Sie [hier](translationinfo.md).
 
-Die englische Fassung ist im Repository von Hand geschrieben, es handelt sich nicht um eine maschinelle Übersetzung:
+Dieser Leitfaden wird auf **Englisch** verfasst — das ist die Standardsprache der IG — und zusätzlich auf **Deutsch** unter `/de/` dargestellt. Die Sprache wechseln Sie über die Auswahl in der Navigationsleiste.
+
+Die deutsche Fassung ist im Repository von Hand geschrieben, es handelt sich nicht um eine maschinelle Übersetzung:
 
 | | |
 | :--- | :--- |
-| Narrative Seiten | [`input/translations/en/pagecontent/`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/tree/main/input/translations/en/pagecontent)— eine Datei je Quellseite, gleicher Dateiname |
-| Navigationsmenü | [`input/translations/en/includes/menu.xml`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/input/translations/en/includes/menu.xml) |
-| UI-Texte der Vorlage (Fußzeile, Tabellenköpfe, Schaltflächen) | Die englischen Texte bringt die Basisvorlage selbst mit. Die deutschen Kataloge[`translations/stringsBase-de.po`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsBase-de.po)und[`stringsArtifacts-de.po`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsArtifacts-de.po)sind hier mitgeliefert, weil die gepinnte Basis-Version keine enthält |
+| Narrative Seiten | [`input/translations/de/pagecontent/`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/tree/main/input/translations/de/pagecontent)— eine Datei je Quellseite, gleicher Dateiname |
+| Navigationsmenü | [`input/translations/de/includes/menu.xml`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/input/translations/de/includes/menu.xml) |
+| UI-Texte der Vorlage (Fußzeile, Tabellenköpfe, Schaltflächen) | [`translations/stringsBase-de.po`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsBase-de.po)und[`stringsArtifacts-de.po`](https://github.com/medizininformatik-initiative/ig-template-mii-kds/blob/main/translations/stringsArtifacts-de.po)— die deutschen Kataloge der Basisvorlage, hier mitgeliefert, weil die gepinnte Basis-Version keine enthält |
 
-Eine Seite ohne englische Entsprechung wird unter `/en/` auf Deutsch dargestellt, mit einem entsprechenden Hinweis am Seitenanfang.
+Eine Seite ohne deutsche Entsprechung wird unter `/de/` auf Englisch dargestellt, mit einem entsprechenden Hinweis am Seitenanfang.
 
 ### Rückmeldungen zu einer Übersetzung
 

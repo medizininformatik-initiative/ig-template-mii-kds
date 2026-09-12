@@ -1,17 +1,17 @@
-# de.medizininformatikinitiative.template.preview#1.3.4: MII KDS IG Template — Preview(de)
+# de.medizininformatikinitiative.template.preview#1.3.4: MII KDS IG Template — Preview(en)
 
 ## Pages
 
-* [Startseite](de/index.md)
-* [Artefaktübersicht](de/artifacts.md)
-* [Hinweise zur Übersetzung](de/translationinfo.md)
+* [Home](en/index.md)
+* [Artifacts Summary](en/artifacts.md)
+* [Translation information](en/translationinfo.md)
 
 ## Resources
 
 ### Logicals
 
-* [Preview Model](de/StructureDefinition-preview-model.md)
+* [Preview Model](en/StructureDefinition-preview-model.md)
 
 ### ImplementationGuides
 
-* [MII KDS IG Template — Preview](de/ImplementationGuide-de.medizininformatikinitiative.template.preview.md)
+* [MII KDS IG Template — Preview](en/ImplementationGuide-de.medizininformatikinitiative.template.preview.md)

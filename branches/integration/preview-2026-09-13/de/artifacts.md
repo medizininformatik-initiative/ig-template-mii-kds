@@ -1,9 +1,11 @@
 # Artefaktübersicht - MII KDS IG Template — Preview v1.3.4
 
-* [**Table of Contents**](toc.md)
+* [**Inhaltsverzeichnis**](toc.md)
 * **Artefaktübersicht**
 
 ## Artefaktübersicht
+
+Für die aktuelle Seite ist keine Übersetzung verfügbar, daher wurde sie in der Standardsprache dargestellt.
 
 Diese Seite bietet eine Liste der FHIR-Artefakte, die in diesem Implementierungsleitfaden definiert sind.
 
