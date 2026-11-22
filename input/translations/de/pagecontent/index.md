@@ -21,26 +21,26 @@ Orange = Warnung, Rot = Wichtig, Grau = Hinweis.
 <!-- Raw HTML block: the page processor does NOT run markdown inside it, so the
      class names have to be marked up as <code>, not with backticks. -->
 <div class="ig-highlight ig-highlight-blue">
-<h5>Blaue Highlight-Box</h5>
+<h4>Blaue Highlight-Box</h4>
 <p>Beispiel für die blaue Hintergrund-Hervorhebung (<code>ig-highlight-blue</code>).</p>
 </div>
 
 <div class="ig-highlight ig-highlight-green">
-<h5>Grüne Highlight-Box</h5>
+<h4>Grüne Highlight-Box</h4>
 <p>Beispiel für die grüne Hintergrund-Hervorhebung (<code>ig-highlight-green</code>).</p>
 </div>
 
 <div class="ig-highlight ig-highlight-orange">
-<h5>Orange Highlight-Box (Warnung)</h5>
+<h4>Orange Highlight-Box (Warnung)</h4>
 <p>Beispiel für die orange Hintergrund-Hervorhebung (<code>ig-highlight-orange</code>) — üblicherweise eine Warnung.</p>
 </div>
 
 <div class="ig-highlight ig-highlight-red">
-<h5>Rote Highlight-Box (Wichtig)</h5>
+<h4>Rote Highlight-Box (Wichtig)</h4>
 <p>Beispiel für die rote Hintergrund-Hervorhebung (<code>ig-highlight-red</code>) — üblicherweise ein wichtiger Hinweis.</p>
 </div>
 
 <div class="ig-highlight ig-highlight-grey">
-<h5>Graue Highlight-Box (Hinweis)</h5>
+<h4>Graue Highlight-Box (Hinweis)</h4>
 <p>Beispiel für die graue Hintergrund-Hervorhebung (<code>ig-highlight-grey</code>) — üblicherweise ein Hinweis oder eine Autorennotiz.</p>
 </div>
