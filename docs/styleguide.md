@@ -44,20 +44,31 @@ language-aware base both MII reference repos use. The rules:
   `content/assets/js/lang-redirects.js`, `font-size-control.js` and
   `back-to-top.js` (both §8), and the vendored
   `bootstrap-accessibility.min.js` (pinned byte-exact, §8).
-  > **The two same-path replacements are on borrowed time.**
-  > `content/assets/js/lang-redirects.js` and `content/assets/ico/favicon.png`
+  > **The same-path replacements are on borrowed time.**
+  > `content/assets/js/lang-redirects.js`, `content/assets/ico/favicon.png`,
+  > `content/searchform.html` and `layouts/layout-profile-history.html`
   > win only because a child template's file at the same path beats the base's.
-  > That makes them invisible drift: a base change to either file is silently
+  > That makes them invisible drift: a base change to any of them is silently
   > discarded. The favicon is intentional and permanent (it is branding);
   > `lang-redirects.js` carries the fix for a defect in the pinned base's
   > landing-page redirect and has a deletion condition attached — the reason is
   > written out in the file itself, the follow-up in
-  > [issue #122](../../../issues/122).
-- **Never ship `config.json`, `layouts/`, `liquid/`, `scripts/` or a
-  `translations/stringsBase.json`.** The IG Publisher *replaces* (does not
-  merge) these per template directory — a copy forks the whole base and
-  silently detaches from base updates. This is also why the template cannot add
-  new `stringsBase` keys of its own.
+  > [issue #122](../../../issues/122). `searchform.html` and
+  > `layout-profile-history.html` are 0.1.0 copies fixing HTML that IG
+  > Publisher 3.0+ reports (an unclosed `<img>` and seven stray `</div>`; a
+  > second, unclosed `<h2 id="root">`). HL7/ig-template-base2 has fixed both
+  > on `main` but not released them; each file names the upstream fix and is
+  > deleted once the pinned base contains it ([#33](../../../issues/33)).
+- **Never ship `config.json`, `liquid/`, `scripts/` or a
+  `translations/stringsBase.json`, and no `layouts/` beyond the one recorded
+  fix above.** The IG Publisher layers a child template over its base file by
+  file: a file at the same path replaces the base's
+  (`TemplateManager.installTemplate` → `NpmPackage.unPackWithAppend`). For
+  `config.json` and `stringsBase.json` that one file is the whole base
+  configuration or string table, so a copy forks it and silently detaches from
+  base updates. This is also why the template cannot add new `stringsBase` keys
+  of its own. A copied layout or script forks only itself, but every copied
+  file is future drift, so it needs a defect to fix and a deletion condition.
 - **Never override `fragment-pageend.html`** (or other core layout fragments).
   It is core page layout; a vendored copy risks breaking the whole style on a
   base-template bump. This was tried and deliberately reverted — the known
