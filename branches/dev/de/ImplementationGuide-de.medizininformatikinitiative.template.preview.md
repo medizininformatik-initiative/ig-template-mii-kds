@@ -10,7 +10,7 @@
   "id" : "de.medizininformatikinitiative.template.preview",
   "language" : "en",
   "url" : "https://github.com/medizininformatik-initiative/ig-template-mii-kds/ImplementationGuide/de.medizininformatikinitiative.template.preview",
-  "version" : "1.3.3",
+  "version" : "1.3.4",
   "name" : "MIIKDSTemplatePreview",
   "title" : "MII KDS IG Template — Preview",
   "_title" : {
@@ -27,7 +27,7 @@
     }]
   },
   "status" : "draft",
-  "date" : "2026-08-28T09:59:57+00:00",
+  "date" : "2026-11-22T17:34:56+00:00",
   "publisher" : "NUM-DIZ",
   "_publisher" : {
     "extension" : [{
@@ -68,7 +68,7 @@
     }],
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology.r4",
-    "version" : "7.3.0"
+    "version" : "7.5.0"
   },
   {
     "id" : "hl7ext",
@@ -78,7 +78,7 @@
     }],
     "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
     "packageId" : "hl7.fhir.uv.extensions.r4",
-    "version" : "5.3.0"
+    "version" : "5.4.0"
   }],
   "definition" : {
     "extension" : [{
