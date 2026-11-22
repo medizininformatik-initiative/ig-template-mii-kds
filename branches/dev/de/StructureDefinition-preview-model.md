@@ -65,7 +65,7 @@ Weitere Repräsentationen des Profils: [CSV](../StructureDefinition-preview-mode
   "name" : "PreviewModel",
   "title" : "Preview Model",
   "status" : "draft",
-  "date" : "2026-11-22T17:34:56+00:00",
+  "date" : "2026-11-22T17:37:29+00:00",
   "publisher" : "NUM-DIZ",
   "_publisher" : {
     "extension" : [{
