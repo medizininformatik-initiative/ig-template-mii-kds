@@ -42,6 +42,10 @@ language-aware base both MII reference repos use. The rules:
   the translation. The overrides use `ig-highlight ig-highlight-grey` in every
   branch and render the notice only where the publisher tracked translation;
   delete them the day the pinned base does the same),
+  `layouts/layout-examplescenario.html` (verbatim copy fixing two publisher
+  rendering defects on ExampleScenario pages: PlantUML processing instructions
+  shown as text, and English rendering phrases on German pages — delete it when
+  the publisher fixes both),
   `includes/structure-tabs.html` (an added authoring include with no base
   counterpart — [recipe](recipes/tab-an-artifact-structure.md)), four CSS
   files (`content/assets/css/bootstrap-accessibility.css` — the vendored
