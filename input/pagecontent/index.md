@@ -25,26 +25,26 @@ conventional reading is orange = warning, red = important, grey = hint.
 <!-- Raw HTML block: the page processor does NOT run markdown inside it, so the
      class names have to be marked up as <code>, not with backticks. -->
 <div class="ig-highlight ig-highlight-blue">
-<h5>Blue highlight box</h5>
+<h4>Blue highlight box</h4>
 <p>Example of the blue background highlight (<code>ig-highlight-blue</code>).</p>
 </div>
 
 <div class="ig-highlight ig-highlight-green">
-<h5>Green highlight box</h5>
+<h4>Green highlight box</h4>
 <p>Example of the green background highlight (<code>ig-highlight-green</code>).</p>
 </div>
 
 <div class="ig-highlight ig-highlight-orange">
-<h5>Orange highlight box (warning)</h5>
+<h4>Orange highlight box (warning)</h4>
 <p>Example of the orange background highlight (<code>ig-highlight-orange</code>) — conventionally a warning.</p>
 </div>
 
 <div class="ig-highlight ig-highlight-red">
-<h5>Red highlight box (important)</h5>
+<h4>Red highlight box (important)</h4>
 <p>Example of the red background highlight (<code>ig-highlight-red</code>) — conventionally an important notice.</p>
 </div>
 
 <div class="ig-highlight ig-highlight-grey">
-<h5>Grey highlight box (hint)</h5>
+<h4>Grey highlight box (hint)</h4>
 <p>Example of the grey background highlight (<code>ig-highlight-grey</code>) — conventionally a hint or authoring note.</p>
 </div>
