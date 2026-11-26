@@ -375,3 +375,16 @@ test("page: both language forms carry the messages for the two issue-less failur
   assert.match(js, /d\.msgNoprofile/);
 });
 
+
+test("page: no skipped heading level (IG Publisher 3.0+ HTML_HEADING_LEVEL_SKIPPED)", () => {
+  // Each language block opens with an <h2>; every later heading may go at most
+  // one level deeper than the one before it. The highlight-box titles count.
+  for (const block of page.split(/(?=<h2[ >])/).filter((b) => b.startsWith("<h2"))) {
+    let prev = 2;
+    for (const m of block.matchAll(/<h([1-6])[ >]/g)) {
+      const level = Number(m[1]);
+      assert.ok(level <= prev + 1, `heading h${level} follows h${prev}`);
+      prev = level;
+    }
+  }
+});
