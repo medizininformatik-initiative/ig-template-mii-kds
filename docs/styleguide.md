@@ -31,7 +31,21 @@ language-aware base both MII reference repos use. The rules:
   base hardcodes the literal "Language:" instead of reading its own
   stringsBase catalog, so the label never translated — the override reads the
   catalog with the English literal as fallback; delete it the day the pinned
-  base reads its catalog there),
+  base reads its catalog there), `includes/template-page-md.html` and
+  `includes/template-page.html` (verbatim copies fixing the translation notice
+  on authored and on publisher-generated pages respectively: the base prints it
+  with an inline style instead of `ig-highlight`, the markdown copy emits it
+  only on pages without a table of contents, and both fall into the
+  "no translation available" branch whenever the publisher wrote no
+  `translated` map — which is every generated page, so the table of contents
+  claimed it was rendered in the default language while listing its entries in
+  the translation. The overrides use `ig-highlight ig-highlight-grey` in every
+  branch and render the notice only where the publisher tracked translation;
+  delete them the day the pinned base does the same),
+  `layouts/layout-examplescenario.html` (verbatim copy fixing two publisher
+  rendering defects on ExampleScenario pages: PlantUML processing instructions
+  shown as text, and English rendering phrases on German pages — delete it when
+  the publisher fixes both),
   `includes/structure-tabs.html` (an added authoring include with no base
   counterpart — [recipe](recipes/tab-an-artifact-structure.md)), four CSS
   files (`content/assets/css/bootstrap-accessibility.css` — the vendored
@@ -43,21 +57,40 @@ language-aware base both MII reference repos use. The rules:
   UI catalogs in `translations/`, and four JS assets:
   `content/assets/js/lang-redirects.js`, `font-size-control.js` and
   `back-to-top.js` (both §8), and the vendored
-  `bootstrap-accessibility.min.js` (pinned byte-exact, §8).
-  > **The two same-path replacements are on borrowed time.**
-  > `content/assets/js/lang-redirects.js` and `content/assets/ico/favicon.png`
+  `bootstrap-accessibility.min.js` (pinned byte-exact, §8) — plus, since
+  2026-09-08, ONE template-contributed page: `content/validate.html` with
+  its `content/assets/js/validate.js` (the instance-validation page,
+  [concepts § 7](concepts.md#7-the-instance-validation-page); rendered by
+  Jekyll from the template's `content/` folder at the site root and in every
+  language folder, guarded by `scripts/validate.test.mjs`). It made the two
+  overridden fragments root-aware: `fragment-footer.html` prefixes the
+  root-relative `qa.html` with `../` only from a language folder, and
+  `fragment-language.html` renders no switcher on a root page.
+  > **The same-path replacements are on borrowed time.**
+  > `content/assets/js/lang-redirects.js`, `content/assets/ico/favicon.png`,
+  > `content/searchform.html` and `layouts/layout-profile-history.html`
   > win only because a child template's file at the same path beats the base's.
-  > That makes them invisible drift: a base change to either file is silently
+  > That makes them invisible drift: a base change to any of them is silently
   > discarded. The favicon is intentional and permanent (it is branding);
   > `lang-redirects.js` carries the fix for a defect in the pinned base's
   > landing-page redirect and has a deletion condition attached — the reason is
   > written out in the file itself, the follow-up in
-  > [issue #122](../../../issues/122).
-- **Never ship `config.json`, `layouts/`, `liquid/`, `scripts/` or a
-  `translations/stringsBase.json`.** The IG Publisher *replaces* (does not
-  merge) these per template directory — a copy forks the whole base and
-  silently detaches from base updates. This is also why the template cannot add
-  new `stringsBase` keys of its own.
+  > [issue #122](../../../issues/122). `searchform.html` and
+  > `layout-profile-history.html` are 0.1.0 copies fixing HTML that IG
+  > Publisher 3.0+ reports (an unclosed `<img>` and seven stray `</div>`; a
+  > second, unclosed `<h2 id="root">`). HL7/ig-template-base2 has fixed both
+  > on `main` but not released them; each file names the upstream fix and is
+  > deleted once the pinned base contains it ([#33](../../../issues/33)).
+- **Never ship `config.json`, `liquid/`, `scripts/` or a
+  `translations/stringsBase.json`, and no `layouts/` beyond the one recorded
+  fix above.** The IG Publisher layers a child template over its base file by
+  file: a file at the same path replaces the base's
+  (`TemplateManager.installTemplate` → `NpmPackage.unPackWithAppend`). For
+  `config.json` and `stringsBase.json` that one file is the whole base
+  configuration or string table, so a copy forks it and silently detaches from
+  base updates. This is also why the template cannot add new `stringsBase` keys
+  of its own. A copied layout or script forks only itself, but every copied
+  file is future drift, so it needs a defect to fix and a deletion condition.
 - **Never override `fragment-pageend.html`** (or other core layout fragments).
   It is core page layout; a vendored copy risks breaking the whole style on a
   base-template bump. This was tried and deliberately reverted — the known
@@ -113,8 +146,8 @@ dragon, translation box.
 ## 3. Highlight boxes
 
 Five reusable classes for calling out content in narrative pages
-(`<div class="ig-highlight ig-highlight-<color>">` with an `<h5>` heading, or
-a kramdown attribute line `{: .ig-highlight .ig-highlight-<color>}` under a
+(`<div class="ig-highlight ig-highlight-<color>">` with a heading as its title,
+or a kramdown attribute line `{: .ig-highlight .ig-highlight-<color>}` under a
 blockquote). Styling only — a module decides what each color means; the
 conventional reading:
 
@@ -129,6 +162,16 @@ conventional reading:
 | `ig-highlight-orange` | warning |
 | `ig-highlight-red` | important notice |
 | `ig-highlight-grey` | hint / authoring note (all `[TODO: …]` prompts use it) |
+
+**The box title** is a heading at the level the page outline needs, usually one
+below the section it sits in: `<h4>` in a `###` section, `<h3>` directly under
+the page title. IG Publisher 3.0 and later report a skipped level as an error
+(`HTML_HEADING_LEVEL_SKIPPED`), so an `<h5>` under a `###` section fails QA.
+The template styles `h2`–`h6` in a box alike, at the size of the former `<h5>`
+title, and leaves the box title unnumbered: it is a label, not a section, so it
+does not use up a section number. `<h5>` titles keep working.
+`scripts/highlight-headings.test.mjs` checks the styling, and that no page in
+this repository skips a level.
 
 The box STRUCTURE lives in `template-base.css`; the colours are
 `--ig-highlight-<variant>-{bg,border,heading}-color` palette variables, so
@@ -216,7 +259,7 @@ the value set here.
 
 | Block | Selectors | New or override | Why |
 | --- | --- | --- | --- |
-| Highlight boxes (§3) | `.ig-highlight`, `.ig-highlight-<color>` (+ their `h5`) | new classes | Reusable, purpose-neutral callouts for page authors, carried over from `kerndatensatz-basis`. Styling only — a module decides what each colour means |
+| Highlight boxes (§3) | `.ig-highlight`, `.ig-highlight-<color>` (+ their `h2`–`h6` title, unnumbered) | new classes | Reusable, purpose-neutral callouts for page authors, carried over from `kerndatensatz-basis`. Styling only — a module decides what each colour means |
 | Narrative tables (§5) | `table:not([class]):not([style]):not([border]):not([data-fhir])` and its `th`/`td` | new rules on markdown tables the base leaves unstyled | Detailed in §5, including why the obvious short selector is wrong |
 | Content images | `#segment-content p > img:not(.float)`, `#segment-content img` | **overrides base rules** | The base floats every `p > img` and caps no width, so a diagram wraps body text beside it and a wide one overflows the column. Content images are block-centred and width-capped instead; a small inline image opts back into the base behaviour with `class="float"` |
 | Structure tabs | `.structure-tabs`, `.structure-tabs .tab-content` | new classes | Spacing and a scroll container for `includes/structure-tabs.html` — [recipe](recipes/tab-an-artifact-structure.md) |
@@ -271,6 +314,22 @@ recorded limitation, §7.)
   including "Table of Contents".
 - The only other literal texts allowed are bare URLs and `alt` texts quoting
   the proper name of the logo variant shown.
+- **The publisher's HTML inspector limits which elements a template page may
+  use.** It converts every output page to Markdown and reports an element it
+  does not know as `Illegal HTML: Illegal HTML element: <name>` — a QA
+  warning per page copy, in every module that builds against the template.
+  `form`, `input`, `select`, `option`, `textarea`, `button` and `label` pass;
+  `datalist`, `optgroup` and `noscript` do not. Where a no-JavaScript notice
+  is needed, render a plain element and let the script remove it (see
+  `content/validate.html` + `content/assets/js/validate.js`).
+- **The instance-validation page is the one body-copy page the template
+  ships** (`content/validate.html`): template content cannot be translated
+  through the IG's `.po` mechanism, so the file carries the English and the
+  German text and selects one per rendered copy from `page.dir` (German in
+  `de/`, English everywhere else; the root copy follows the IG's default
+  language). Its chrome is included with the copy's language. Keep both
+  texts in step when editing — `scripts/validate.test.mjs` checks that
+  every route and both boxes appear in each.
 - The HL7 trademark attribution in the footer stays **English on every
   language's pages**: it is HL7's prescribed legal formula, not translatable
   UI text (rendered because the header shows the FHIR flame on every page —

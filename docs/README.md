@@ -17,6 +17,7 @@ Everything else here is about changing the template itself.
 | Understand what an IG template is and why this one exists | [concepts.md](concepts.md) |
 | Publish the preview so someone can look at it | [recipes/publish-the-preview-on-github-pages.md](recipes/publish-the-preview-on-github-pages.md) |
 | Change a colour, a logo, or the footer | [styleguide.md](styleguide.md) · [recipes/change-the-brand-color.md](recipes/change-the-brand-color.md) |
+| Understand, point or switch off the instance-validation page (`validate.html`) | [concepts.md § 7](concepts.md#7-the-instance-validation-page) |
 | Show one artifact's structure as tabs inside a page | [recipes/tab-an-artifact-structure.md](recipes/tab-an-artifact-structure.md) |
 | Know what CI runs, and which variable turns it off | [workflows.md](workflows.md) |
 | Keep the toolchain and dependencies current | [maintenance.md](maintenance.md) |
