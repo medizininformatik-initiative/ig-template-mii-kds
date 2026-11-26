@@ -117,7 +117,6 @@
 table:not([class]):not([style]):not([border]):not([data-fhir]) {
   border-collapse: collapse;
   margin-bottom: 10px;
-  width: 100%; /* use the content column; a shrink-to-fit table wastes the page width and wraps cells early */
 }
 table:not([class]):not([style]):not([border]):not([data-fhir]) th,
 table:not([class]):not([style]):not([border]):not([data-fhir]) td {
