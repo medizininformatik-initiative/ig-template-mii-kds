@@ -74,7 +74,9 @@ jobs:
   # guards the NUM-DIZ/MII brand switch: complete palette override, exact-match
   # guards ('mii' selects MII; everything else renders the NUM-DIZ default),
   # WCAG AA recomputed from the shipped hex values, and the derived English
-  # combo logo's provenance marker.
+  # combo logo's provenance marker. highlight-headings.test.mjs holds the
+  # highlight-box title to the heading outline: styled and unnumbered at any
+  # level, and never a skipped level on a page here (#33).
   # Offline, no npm install, well under a second.
   tooling-tests:
     runs-on: ubuntu-latest
@@ -94,6 +96,7 @@ jobs:
           node --test scripts/check-updates.test.mjs \
             scripts/terminology-fallback.test.mjs \
             scripts/narrative-table-styles.test.mjs \
+            scripts/highlight-headings.test.mjs \
             scripts/toolchain-pins.test.mjs \
             scripts/gen-pages-index.test.mjs \
             scripts/brand-switch.test.mjs
