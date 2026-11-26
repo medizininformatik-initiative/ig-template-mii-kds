@@ -22,6 +22,20 @@ The preview build resolves terminology against the **public HL7 server
 sets — supply the client certificate. Access is client-certificate-gated and
 granted only to entities in Germany (request it from the SU-TermServ).
 
+### Forcing `tx.fhir.org` while the certificate is present
+
+The certificate secrets are org-level, so one repository cannot simply go without
+them. To build the preview against `tx.fhir.org` anyway — for example while
+SU-TermServ answers wrongly for terminology this preview does not need — set the
+repository variable, and delete it to return to the automatic choice:
+
+```sh
+gh variable set PREVIEW_TX --repo medizininformatik-initiative/ig-template-mii-kds --body "tx.fhir.org"
+gh variable delete PREVIEW_TX --repo medizininformatik-initiative/ig-template-mii-kds
+```
+
+The build summary and the PR comment then name the forced server.
+
 ### What kind of certificate is required
 
 The build workflows pass `-fhir-settings .github/fhir-settings.json` to the

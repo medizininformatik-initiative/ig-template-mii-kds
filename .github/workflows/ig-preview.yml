@@ -9,11 +9,16 @@
 #            workflow_dispatch.
 # Toggle:    vars.ENABLE_PREVIEW — ON by default; set the repo variable to
 #            'false' to skip the job (it then shows as "skipped", not failed).
-# Terminology: auto-selected, NOT a toggle — SU-TermServ via a local
-#            client-cert nginx proxy when all three SU_TERMSERV_CLIENT_*
-#            secrets are present, otherwise the HL7 tx.fhir.org fallback with a
-#            ::notice. The build never hard-fails for lack of the credential —
-#            a partial secret set falls back too (scripts/terminology-fallback.test.mjs).
+# Terminology: auto-selected — SU-TermServ via a local client-cert nginx
+#            proxy when all three SU_TERMSERV_CLIENT_* secrets are present,
+#            otherwise the HL7 tx.fhir.org fallback with a ::notice. The build
+#            never hard-fails for lack of the credential — a partial secret set
+#            falls back too (scripts/terminology-fallback.test.mjs).
+#            Override: the repo variable PREVIEW_TX=tx.fhir.org forces the HL7
+#            server even when the secrets are present (the secrets are org-level
+#            and cannot be withheld from one repository). Use it while
+#            SU-TermServ misbehaves for terminology this preview does not need;
+#            delete the variable to return to the automatic choice.
 # Human-gated: nothing here publishes formally. The site root and version-like
 #            paths on gh-pages are RESERVED for the gated -go-publish output;
 #            this workflow writes under branches/<branch>/ plus ONE root file:
@@ -92,6 +97,7 @@ jobs:
       - name: Select terminology server (SU-TermServ if the client-cert secrets are present, else HL7 fallback)
         id: tx
         env:
+          PREVIEW_TX: ${{ vars.PREVIEW_TX }}
           SU_TERMSERV_CLIENT_CERT: ${{ secrets.SU_TERMSERV_CLIENT_CERT }}
           SU_TERMSERV_CLIENT_KEY: ${{ secrets.SU_TERMSERV_CLIENT_KEY }}
           SU_TERMSERV_CLIENT_PASSWORD: ${{ secrets.SU_TERMSERV_CLIENT_PASSWORD }}
@@ -101,7 +107,11 @@ jobs:
           # with the password below, so a partial set must fall back rather
           # than fail the build (docs/secrets.md — deleting the three secrets
           # one at a time must never break CI).
-          if [ -n "${SU_TERMSERV_CLIENT_CERT:-}" ] && [ -n "${SU_TERMSERV_CLIENT_KEY:-}" ] && [ -n "${SU_TERMSERV_CLIENT_PASSWORD:-}" ]; then
+          if [ "${PREVIEW_TX:-}" = "tx.fhir.org" ]; then
+            echo "tx=https://tx.fhir.org" >> "$GITHUB_OUTPUT"
+            echo "mode=HL7 tx.fhir.org (forced by vars.PREVIEW_TX)" >> "$GITHUB_OUTPUT"
+            echo "::notice::vars.PREVIEW_TX=tx.fhir.org — terminology forced to HL7 tx.fhir.org although SU-TermServ credentials may be present. Delete the variable to return to the automatic choice."
+          elif [ -n "${SU_TERMSERV_CLIENT_CERT:-}" ] && [ -n "${SU_TERMSERV_CLIENT_KEY:-}" ] && [ -n "${SU_TERMSERV_CLIENT_PASSWORD:-}" ]; then
             echo "SU-TermServ client certificate present — starting a local client-cert nginx proxy."
             mkdir -p nginx/certs
             # Pinned proxy config (kerndatensatz-meta, full commit SHA): forwards to

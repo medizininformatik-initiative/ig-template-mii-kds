@@ -46,7 +46,7 @@ test("the terminology step reads all three SU-TermServ secrets", () => {
 });
 
 test("the proxy branch is guarded on all three secrets, not just the cert", () => {
-  const guard = terminologyStep().match(/^\s*if \[.*\]; then$/m);
+  const guard = terminologyStep().match(/^\s*(?:el)?if \[.*SU_TERMSERV_CLIENT_CERT.*\]; then$/m);
   assert.ok(guard, "the terminology step has no `if [ … ]; then` guard");
   for (const name of SECRETS) {
     assert.ok(
@@ -62,4 +62,14 @@ test("the else branch falls back to tx.fhir.org with a notice", () => {
   const fallback = step.slice(step.search(/^\s*else$/m));
   assert.match(fallback, /tx=https:\/\/tx\.fhir\.org/);
   assert.match(fallback, /::notice::.*tx\.fhir\.org/);
+});
+
+test("vars.PREVIEW_TX=tx.fhir.org forces the HL7 server before the secrets are looked at", () => {
+  const step = terminologyStep();
+  assert.match(step, /^\s+PREVIEW_TX: \$\{\{ vars\.PREVIEW_TX \}\}$/m, "PREVIEW_TX is not wired into the step's env:");
+  const override = step.indexOf('if [ "${PREVIEW_TX:-}" = "tx.fhir.org" ]; then');
+  const proxy = step.search(/^\s*elif \[.*SU_TERMSERV_CLIENT_CERT.*\]; then$/m);
+  assert.ok(override >= 0, "no PREVIEW_TX override branch");
+  assert.ok(proxy > override, "the override must be checked before the SU-TermServ proxy branch");
+  assert.match(step.slice(override, proxy), /tx=https:\/\/tx\.fhir\.org/, "the override branch does not select tx.fhir.org");
 });
