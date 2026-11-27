@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.4.0](https://github.com/medizininformatik-initiative/ig-template-mii-kds/compare/v1.3.4...v1.4.0) (2026-11-26)
+
+
+### Features
+
+* instance-validation page - validate your own instance against the module ([#26](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/26)) ([e84b53a](https://github.com/medizininformatik-initiative/ig-template-mii-kds/commit/e84b53a192f7bde26fa24fbdef7d100e56e94486))
+
+
+### Bug Fixes
+
+* **ci:** announce Release Please releases on Zulip ([#38](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/38)) ([ebe3703](https://github.com/medizininformatik-initiative/ig-template-mii-kds/commit/ebe37033cf03c120e01c80a71b8a90bf2429b765))
+* **css:** uniform JSON blocks and diagrams that fit the content column ([#24](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/24)) ([18590bd](https://github.com/medizininformatik-initiative/ig-template-mii-kds/commit/18590bd2231bd6435d12e5f6f6c5322d5514667f))
+* **includes:** translation notice uses the highlight class on every translated page ([#23](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/23)) ([2b0da58](https://github.com/medizininformatik-initiative/ig-template-mii-kds/commit/2b0da58ddf6b0d32e769f24381fa468e989987ed))
+* **layouts:** clean ExampleScenario pages — no PlantUML processing instructions, German labels ([#25](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/25)) ([aeadfb0](https://github.com/medizininformatik-initiative/ig-template-mii-kds/commit/aeadfb083def370de926550a4b81d4720325f725))
+* override two fhir2.base.template 0.1.0 pages with invalid HTML ([#35](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/35)) ([83803e0](https://github.com/medizininformatik-initiative/ig-template-mii-kds/commit/83803e0b52396b3c17f84328d17686b6dc4b15e4)), closes [#33](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/33)
+* style highlight-box titles at any heading level ([#34](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/34)) ([3f7215a](https://github.com/medizininformatik-initiative/ig-template-mii-kds/commit/3f7215a56cb4e25df0e071474a245252f2cfc249)), closes [#33](https://github.com/medizininformatik-initiative/ig-template-mii-kds/issues/33)
+
 ## [1.3.4](https://github.com/medizininformatik-initiative/ig-template-mii-kds/compare/v1.3.3...v1.3.4) (2026-08-28)
 
 
